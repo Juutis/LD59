@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -100,13 +101,14 @@ public class Enemy : MonoBehaviour
 
     private void handleMoving()
     {
+        Debug.Log("moveTarget=" + moveTarget);
         if (Vector3.Distance(myPosition, moveTarget) > TARGET_LOCATION_MARGIN)
         {
             rb.linearVelocity = (moveTarget - myPosition).normalized * movementSpeed;
         }
         else
         {
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity = Vector3.zero;
         }
     }
 
@@ -117,7 +119,7 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        var rotation = Vector3.SignedAngle(transform.up, TargetDirection, Vector3.up);
+        var rotation = Vector3.SignedAngle(transform.forward, TargetDirection, Vector3.up);
         var maxRotationPerTick = Time.deltaTime * turnSpeed;
         var rotationPerTick = Mathf.Clamp(rotation, -maxRotationPerTick, maxRotationPerTick);
         transform.Rotate(transform.up, rotationPerTick);
@@ -146,10 +148,13 @@ public class Enemy : MonoBehaviour
             {
                 moveTarget = getNextCorner();
             }
+        } else
+        {
+            moveTarget = transform.position;
         }
     }
 
-    private Vector2 getNextCorner()
+    private Vector3 getNextCorner()
     {
         while (!IsLastCorner() && distanceToNextCorner() < 0.1f)
         {
@@ -160,7 +165,7 @@ public class Enemy : MonoBehaviour
 
     private float distanceToNextCorner()
     {
-        return Vector2.Distance(path.corners[cornerIndex], transform.position);
+        return Vector3.Distance(path.corners[cornerIndex], transform.position);
     }
 
     private bool IsLastCorner()
@@ -188,7 +193,19 @@ public class Enemy : MonoBehaviour
     {
         NavMeshPath newPath = new NavMeshPath();
         NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, newPath);
+        Debug.Log("New path aquired! length=" + newPath.corners.Length);
         return newPath;
+    }
+
+    private void debugPathing()
+    {
+        Vector3 prev = transform.position;
+        for(int i = 0; i<path.corners.Length; i++)
+        {
+            Debug.DrawLine(prev, path.corners[i], Color.red);
+            prev = path.corners[i];
+        }
+        Debug.DrawLine(transform.position, path.corners[cornerIndex], Color.green);
     }
 
     
