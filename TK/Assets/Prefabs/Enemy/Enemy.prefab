@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 6999567205758284588}
   - component: {fileID: 8580514664960342495}
   - component: {fileID: 6188188695320200769}
+  - component: {fileID: 5215947635081651457}
+  - component: {fileID: 7930979237288172995}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   bulletTrailPrefab: {fileID: 8711352348840058643, guid: c3fd6ec575c98e2448512aae3213754b, type: 3}
+  config: {fileID: 11400000, guid: d9a73a049a31665469b179f201aea618, type: 2}
 --- !u!54 &6188188695320200769
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -74,6 +77,41 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &5215947635081651457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6393644873884263280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371fe55e9fd05bb459987aa006879d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterHealth
+--- !u!136 &7930979237288172995
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6393644873884263280}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!1001 &6833949427559185794
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     private BulletTrail bulletTrailPrefab;
+    [SerializeField]
+    private EnemyConfig config;
 
     private GameObject player;
     private EnemyState state;
@@ -26,7 +28,7 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody rb;
 
-    private float movementSpeed = 5.0f;
+    private float movementSpeed;
     private float turnSpeed = 360.0f;
 
     private int visionCheckLayers;
@@ -65,6 +67,13 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         UpdatePathing();
+        movementSpeed = config.Speed;
+        GetComponent<CharacterHealth>().InitHealth(config.Health, Death);
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 
     // Update is called once per frame
