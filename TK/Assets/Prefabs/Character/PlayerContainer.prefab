@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5665719786361108482}
   - component: {fileID: 8952503503207847506}
   - component: {fileID: 4377137341273291781}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   aimTarget: {fileID: 2185791875335311914}
+  playerConfig: {fileID: 0}
 --- !u!54 &4377137341273291781
 Rigidbody:
   m_ObjectHideFlags: 0
