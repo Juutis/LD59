@@ -24,8 +24,16 @@ public class PlayerMovement : MonoBehaviour
     {
         dir = moveAction.ReadValue<Vector2>();
 
+
+        Vector3 pos = transform.position;
+        Vector3 camPos = Camera.main.transform.position;
+        Camera.main.transform.position = new Vector3(pos.x, camPos.y, pos.z);
+    }
+
+    private void LateUpdate()
+    {
         Vector3 targetDir = aimTarget.position - transform.position;
-        float angle = Vector2.SignedAngle(new Vector2(transform.forward.x, transform.forward.z), new (targetDir.x, targetDir.z));
+        float angle = Vector2.SignedAngle(new Vector2(transform.forward.x, transform.forward.z), new(targetDir.x, targetDir.z));
         transform.Rotate(Vector3.down, angle);
     }
 

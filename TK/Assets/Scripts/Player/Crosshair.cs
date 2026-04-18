@@ -10,7 +10,7 @@ public class Crosshair : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
         Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.y));
