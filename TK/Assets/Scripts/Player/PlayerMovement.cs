@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 dir;
     private Rigidbody rb;
 
+    private CharacterHealth health;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +22,9 @@ public class PlayerMovement : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         speed = playerConfig.Speed;
+
+        health = GetComponent<CharacterHealth>();
+        health.InitHealth(playerConfig.Health, Death);
     }
 
     // Update is called once per frame
@@ -44,5 +49,10 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 vel = dir * speed;
         rb.linearVelocity = new Vector3(vel.x, 0f, vel.y);
+    }
+
+    private void Death()
+    {
+        Debug.Log("GAME OVER");
     }
 }
