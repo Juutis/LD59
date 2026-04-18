@@ -27,9 +27,15 @@ public class Enemy : MonoBehaviour
     private float turnSpeed = 90.0f;
     private float attackRange = 3.0f;
 
+    private int visionCheckLayers;
+    private float visionRange = 10;
+    private float visionAngle = 70;
+    private float smellDistance = 1.5f;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        visionCheckLayers = LayerMask.GetMask("World", "Player");
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -42,8 +48,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        handlePathing();
-        handleRotation();
         switch(state)
         {
             case EnemyState.IDLE:
@@ -56,6 +60,8 @@ public class Enemy : MonoBehaviour
                 attack();
                 break;
         }
+        handlePathing();
+        handleRotation();
     }
 
     void FixedUpdate()
@@ -68,6 +74,7 @@ public class Enemy : MonoBehaviour
 
     private void idle()
     {
+        TargetLocation = transform.position;
         checkPlayerVisibility();
     }
 
@@ -99,7 +106,30 @@ public class Enemy : MonoBehaviour
 
     private bool canSeePlayer()
     {
-        return true;
+        var distanceToPlayer = Vector3.Distance(myPosition, player.transform.position);
+        var dir = player.transform.position - myPosition;
+
+        // ignore vision if player is close enough
+        if (distanceToPlayer > smellDistance)
+        {
+            if (distanceToPlayer > visionRange)
+            {
+                return false;
+            }
+            if (Vector3.Angle(transform.forward, dir) > visionAngle)
+            {
+                return false;
+            }
+        }
+
+        if (Physics.Raycast(myPosition, dir, out var hit, 1000.0f, visionCheckLayers))
+        {
+            if (hit.collider.gameObject == player)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void handleMoving()
