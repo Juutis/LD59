@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     private Rigidbody rb;
 
     private float movementSpeed = 5.0f;
-    private float turnSpeed = 90.0f;
+    private float turnSpeed = 360.0f;
     private float attackRange = 3.0f;
 
     private int visionCheckLayers;
@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        handlePathing();
+        handleRotation();
         switch(state)
         {
             case EnemyState.IDLE:
@@ -60,8 +62,6 @@ public class Enemy : MonoBehaviour
                 attack();
                 break;
         }
-        handlePathing();
-        handleRotation();
     }
 
     void FixedUpdate()
@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
 
     private void idle()
     {
-        TargetLocation = transform.position;
+        TargetLocation = myPosition;
         checkPlayerVisibility();
     }
 
@@ -88,10 +88,10 @@ public class Enemy : MonoBehaviour
         if (canSeePlayer())
         {
             TargetLocation = player.transform.position;
-            TargetDirection = player.transform.position - transform.position;
-            if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
+            TargetDirection = player.transform.position - myPosition;
+            if (Vector3.Distance(myPosition, player.transform.position) < attackRange)
             {
-                moveTarget = transform.position;
+                moveTarget = myPosition;
             }
         }
     }
