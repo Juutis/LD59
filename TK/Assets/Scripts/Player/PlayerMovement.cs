@@ -5,8 +5,10 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField]
     private Transform aimTarget;
+    [SerializeField]
+    private PlayerConfig playerConfig;
 
-    private float speed = 3f;
+    private float speed;
     private InputAction moveAction;
     private Vector2 dir;
     private Rigidbody rb;
@@ -17,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
 
         rb = GetComponent<Rigidbody>();
+        speed = playerConfig.Speed;
     }
 
     // Update is called once per frame
