@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -21,12 +20,12 @@ public class Enemy : MonoBehaviour
     private bool isAlive = true;
 
     private float TARGET_LOCATION_MARGIN = 0.1f;
-    private float TARGET_DIRECTION_MARGIN = 0.1f;
 
     private Rigidbody rb;
 
     private float movementSpeed = 5.0f;
     private float turnSpeed = 90.0f;
+    private float attackRange = 3.0f;
 
     void Awake()
     {
@@ -83,6 +82,10 @@ public class Enemy : MonoBehaviour
         {
             TargetLocation = player.transform.position;
             TargetDirection = player.transform.position - transform.position;
+            if (Vector3.Distance(transform.position, player.transform.position) < attackRange)
+            {
+                moveTarget = transform.position;
+            }
         }
     }
 
@@ -101,7 +104,6 @@ public class Enemy : MonoBehaviour
 
     private void handleMoving()
     {
-        Debug.Log("moveTarget=" + moveTarget);
         if (Vector3.Distance(myPosition, moveTarget) > TARGET_LOCATION_MARGIN)
         {
             rb.linearVelocity = (moveTarget - myPosition).normalized * movementSpeed;
@@ -123,6 +125,11 @@ public class Enemy : MonoBehaviour
         var maxRotationPerTick = Time.deltaTime * turnSpeed;
         var rotationPerTick = Mathf.Clamp(rotation, -maxRotationPerTick, maxRotationPerTick);
         transform.Rotate(transform.up, rotationPerTick);
+    }
+
+    private void shoot()
+    {
+        
     }
 
     
@@ -193,7 +200,6 @@ public class Enemy : MonoBehaviour
     {
         NavMeshPath newPath = new NavMeshPath();
         NavMesh.CalculatePath(transform.position, target, NavMesh.AllAreas, newPath);
-        Debug.Log("New path aquired! length=" + newPath.corners.Length);
         return newPath;
     }
 
