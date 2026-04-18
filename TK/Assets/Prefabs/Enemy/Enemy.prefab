@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e367a68b29137c4d914cb383b0c6f7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  bulletTrailPrefab: {fileID: 8711352348840058643, guid: c3fd6ec575c98e2448512aae3213754b, type: 3}
 --- !u!54 &6188188695320200769
 Rigidbody:
   m_ObjectHideFlags: 0

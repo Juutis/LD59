@@ -3,6 +3,9 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private BulletTrail bulletTrailPrefab;
+
     private GameObject player;
     private EnemyState state;
 
@@ -25,12 +28,31 @@ public class Enemy : MonoBehaviour
 
     private float movementSpeed = 5.0f;
     private float turnSpeed = 360.0f;
-    private float attackRange = 3.0f;
 
     private int visionCheckLayers;
     private float visionRange = 10;
     private float visionAngle = 70;
     private float smellDistance = 1.5f;
+
+    private float attackRange = 3.0f;
+    private int minBurst = 8;
+    private int maxBurst = 10;
+    private float aimingDuration = 0.6f;
+    private float trackingDuration = 0.4f;
+    private float backSwingDuration = 0.8f;
+    private float minTimeBetweenBursts = 1.0f;
+    private float maxTimeBetweenBursts = 1.5f;
+    private float fireRate = 10;
+    private float accuracyDegrees = 20;
+
+    private int burstRemaining = 0;
+    private AttackState attackState = AttackState.PURSUE;
+    private float aimingTimer;
+    private float trackingTimer;
+    private float shootTimer;
+    private float backSwingTimer;
+    private float burstTimer;
+
 
     void Awake()
     {
@@ -85,14 +107,72 @@ public class Enemy : MonoBehaviour
 
     private void attack()
     {
-        if (canSeePlayer())
+        var hasVision = canSeePlayer();
+        var playerDir = player.transform.position - myPosition;
+        if (hasVision)
         {
             TargetLocation = player.transform.position;
-            TargetDirection = player.transform.position - myPosition;
-            if (Vector3.Distance(myPosition, player.transform.position) < attackRange)
-            {
+        }
+
+        switch (attackState)
+        {
+            case AttackState.PREPARE:
                 moveTarget = myPosition;
-            }
+                if (trackingTimer > Time.time)
+                {
+                    TargetDirection = playerDir;
+                }
+                if (aimingTimer < Time.time)
+                {
+                    attackState = AttackState.SHOOT;
+                    burstRemaining = Random.Range(minBurst, maxBurst + 1);
+                }
+                break;
+            case AttackState.SHOOT:
+                moveTarget = myPosition;
+                if (burstRemaining > 0)
+                {
+                    if (shootTimer < Time.time)
+                    {
+                        shoot();
+                        shootTimer = Time.time + 1.0f / fireRate;
+                        burstRemaining--;
+                    }
+                }
+                else
+                {
+                    attackState = AttackState.BACKSWING;
+                    backSwingTimer = Time.time + backSwingDuration;
+                }
+                break;
+            case AttackState.BACKSWING:
+                moveTarget = myPosition;
+                if (backSwingTimer < Time.time)
+                {
+                    attackState = AttackState.PURSUE;
+                    burstTimer = Time.time + Random.Range(minTimeBetweenBursts, maxTimeBetweenBursts);
+                }
+                break;
+            case AttackState.PURSUE:
+                if (hasVision)
+                {
+                    TargetDirection = playerDir;
+                    if (Vector3.Distance(myPosition, player.transform.position) < attackRange)
+                    {
+                        moveTarget = myPosition;
+                        if (burstTimer < Time.time)
+                        {
+                            attackState = AttackState.PREPARE;
+                            aimingTimer = Time.time + aimingDuration;
+                            trackingTimer = Time.time + trackingDuration;
+                        }
+                    }
+                }
+                else
+                {
+                    TargetDirection = TargetLocation - myPosition;
+                }
+                break;
         }
     }
 
@@ -159,7 +239,19 @@ public class Enemy : MonoBehaviour
 
     private void shoot()
     {
-        
+        var dispersion = Random.Range(-accuracyDegrees, accuracyDegrees);
+        var dispersionQuat = Quaternion.AngleAxis(dispersion, Vector3.up);
+        var dir = dispersionQuat * TargetDirection;
+        var trailEnd = myPosition + dir.normalized * attackRange * 4;
+        if (Physics.Raycast(myPosition, dir, out var hit, attackRange * 4, visionCheckLayers))
+        {
+            trailEnd = hit.point;
+            if (hit.collider.gameObject == player)
+            {
+            }
+        }
+        var bulletTrail = Instantiate(bulletTrailPrefab);
+        bulletTrail.Init(myPosition, trailEnd);
     }
 
     
@@ -250,6 +342,14 @@ public class Enemy : MonoBehaviour
         IDLE,
         PATROL,
         ATTACK
+    }
+
+    private enum AttackState
+    {
+        PREPARE,
+        SHOOT,
+        BACKSWING,
+        PURSUE
     }
 }
 
