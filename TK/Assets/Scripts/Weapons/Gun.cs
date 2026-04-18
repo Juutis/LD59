@@ -44,6 +44,14 @@ public class BaseGun : MonoBehaviour
             {
                 trailEnd = hit.point;
                 Debug.Log("Hit");
+
+                if (hit.collider.tag == "Enemy")
+                {
+                    if (hit.collider.gameObject.TryGetComponent(out CharacterHealth enemy))
+                    {
+                        enemy.Hurt(damage);
+                    }
+                }
             }
 
             BulletTrail bulletTrail = Instantiate(bulletTrailPrefab);
