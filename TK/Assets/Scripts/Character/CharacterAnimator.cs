@@ -19,8 +19,6 @@ public class CharacterAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpperBody.eulerAngles = new Vector3(-90, 0, 0);
-
         var moveDir = rb.linearVelocity.normalized;
 
         if (rb.linearVelocity.magnitude < 0.1f)
@@ -46,11 +44,4 @@ public class CharacterAnimator : MonoBehaviour
             LegsAnimator.Play("run_back");
         }
     }
-
-    void FixedUpdate()
-    {
-        rb.linearVelocity = rb.transform.forward.normalized;
-        rb.angularVelocity = Vector3.up;
-    }
-
 }
