@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Pistol : BaseGun
+public class MachineGun : BaseGun
 {
     // Update is called once per frame
     void Update()
@@ -10,7 +10,7 @@ public class Pistol : BaseGun
 
     public new bool Shoot()
     {
-        Debug.Log($"Pistol pum {Time.time - lastShot} | {(1 / rateOfFire)} | {(Time.time - lastShot) > (1 / rateOfFire)}");
+        Debug.Log($"Big gun pum pum {Time.time - lastShot} | {(1 / rateOfFire)} | {(Time.time - lastShot) > (1 / rateOfFire)}");
         if ((Time.time - lastShot) > (1 / rateOfFire))
         {
             Debug.Log("Shooting");

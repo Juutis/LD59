@@ -36,7 +36,8 @@ public class BaseGun : MonoBehaviour
         
     }
 
-    public void Shoot()
+    public bool Shoot()
     {
+        return false;
     }
 }

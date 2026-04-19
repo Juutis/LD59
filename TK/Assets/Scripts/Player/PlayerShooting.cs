@@ -9,9 +9,9 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     private Shotgun gun2;
     [SerializeField]
-    private BaseGun gun3;
+    private MachineGun gun3;
     [SerializeField]
-    private BaseGun gun4;
+    private Pistol gun4; // sniper rifle
 
     private InputAction selectGun1;
     private InputAction selectGun2;
@@ -20,8 +20,8 @@ public class PlayerShooting : MonoBehaviour
 
     private bool hasGun1 = true;
     private bool hasGun2 = true;
-    private bool hasGun3 = false;
-    private bool hasGun4 = false;
+    private bool hasGun3 = true;
+    private bool hasGun4 = true;
 
     private int selectedGun = 0;
 
@@ -35,7 +35,7 @@ public class PlayerShooting : MonoBehaviour
         selectGun3 = InputSystem.actions.FindAction("SelectGun3");
         selectGun4 = InputSystem.actions.FindAction("SelectGun4");
         shootAction = InputSystem.actions.FindAction("Attack");
-        ammos = new int[4] { 0, 5, 0, 0 };
+        ammos = new int[4] { 0, 10, 30, 5 };
     }
 
     // Update is called once per frame
@@ -60,27 +60,34 @@ public class PlayerShooting : MonoBehaviour
         {
             Debug.Log("Gun 4 selected");
             selectedGun = 3;
-        } 
+        }
 
-        if (shootAction.IsPressed())
+        bool hasAmmo = ammos[selectedGun] > 0 || selectedGun == 0;
+
+        if (shootAction.IsPressed() && hasAmmo)
         {
+            bool didShoot = false;
+
             switch(selectedGun)
             {
                 case 0:
-                    gun1.Shoot();
+                    didShoot = gun1.Shoot();
                     break;
                 case 1:
-                    gun2.Shoot();
+                    didShoot = gun2.Shoot();
                     break;
                 case 2:
-                    gun3.Shoot();
+                    didShoot = gun3.Shoot();
                     break;
                 case 3:
-                    gun4.Shoot();
+                    didShoot = gun4.Shoot();
                     break;
             }
 
-            ammos[selectedGun] = Mathf.Max(0, ammos[selectedGun] - 1);
+            if (didShoot)
+            {
+                ammos[selectedGun] = Mathf.Max(0, ammos[selectedGun] - 1);
+            }
         }
     }
 }

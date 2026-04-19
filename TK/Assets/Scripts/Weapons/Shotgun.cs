@@ -11,7 +11,7 @@ public class Shotgun : BaseGun
         
     }
 
-    public new void Shoot()
+    public new bool Shoot()
     {
         Debug.Log($"Shotgun pum {Time.time - lastShot} | {(1 / rateOfFire)} | {(Time.time - lastShot) > (1 / rateOfFire)}");
         if (Time.time - lastShot > (1 / rateOfFire))
@@ -21,11 +21,12 @@ public class Shotgun : BaseGun
             shootEffect.Play();
 
             float angle = -(spreadAngle / 2f);
-            float angleStep = spreadAngle / 5f;
+            float angleStep = spreadAngle / 4f;
 
             for (int i = 0; i < shots; i++)
             {
-                float currentAngle = angle + angleStep * i;
+                float randomSpread = Random.Range(0, spreadAngle / 10f);
+                float currentAngle = randomSpread + angle + angleStep * i;
                 Vector3 dir = Quaternion.AngleAxis(currentAngle, Vector3.up) * transform.forward;
 
                 var trailEnd = transform.position + dir * range * 4;
@@ -47,7 +48,10 @@ public class Shotgun : BaseGun
                 BulletTrail bulletTrail = Instantiate(bulletTrailPrefab);
                 bulletTrail.Init(transform.position, trailEnd);
             }
+
+            return true;
         }
 
+        return false;
     }
 }
