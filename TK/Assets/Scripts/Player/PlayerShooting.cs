@@ -34,6 +34,9 @@ public class PlayerShooting : MonoBehaviour
         shootAction = InputSystem.actions.FindAction("Attack");
         ammos = new int[4] { 0, 0, 0, 0 };
         hasGun = new bool[4] { true, false, false, false };
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
