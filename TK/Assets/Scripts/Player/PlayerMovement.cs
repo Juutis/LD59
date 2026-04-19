@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
         health = GetComponent<CharacterHealth>();
         health.InitHealth(playerConfig.Health, Death, null);
+        GameManager.instance.SetPlayerHealth(health);
     }
 
     // Update is called once per frame

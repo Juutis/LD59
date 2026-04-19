@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     private int[] currentLevelAmmos;
 
     private PlayerShooting playerShooting;
+    private CharacterHealth playerHealth;
 
     private int currentLevel = 0;
 
@@ -31,6 +32,12 @@ public class GameManager : MonoBehaviour
     {
         this.playerShooting = player;
     }
+
+    public void SetPlayerHealth(CharacterHealth playerHealth)
+    {
+        this.playerHealth = playerHealth;
+    }
+
     public void EndLevel()
     {
         currentLevelAmmos = playerShooting.GetAmmos().ToList().ToArray();
@@ -53,5 +60,10 @@ public class GameManager : MonoBehaviour
     public int[] GetCurrentAmmos()
     {
         return playerShooting.GetAmmos();
+    }
+
+    public float GetCurrentHealth()
+    {
+        return playerHealth.GetHealth();
     }
 }
