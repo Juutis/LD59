@@ -37,7 +37,7 @@ public class Shotgun : BaseGun
                     {
                         if (hit.collider.gameObject.TryGetComponent(out CharacterHealth enemy))
                         {
-                            enemy.Hurt(damage);
+                            enemy.Hurt(damage, dir);
                         }
                     }
                 }
