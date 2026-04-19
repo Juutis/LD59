@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunConfig
   RateOfFire: 8
   Damage: 5
-  Range: 20
+  Range: 4
   SpreadAngle: 14
