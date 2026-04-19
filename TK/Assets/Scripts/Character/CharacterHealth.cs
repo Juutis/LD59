@@ -10,6 +10,8 @@ public class CharacterHealth : MonoBehaviour
     [SerializeField]
     private GameObject bloodPrefab;
 
+    private bool dead = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -37,9 +39,10 @@ public class CharacterHealth : MonoBehaviour
         direction.y = 0;
         blood.transform.LookAt(transform.position - direction, Vector3.up);
 
-        if (health <= 0)
+        if (health <= 0 && !dead)
         {
             transform.LookAt(transform.position - direction, Vector3.up);
+            dead = true;
             Kill();
         }
     }

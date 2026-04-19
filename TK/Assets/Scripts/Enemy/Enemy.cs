@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         visionCheckLayers = LayerMask.GetMask("World", "Player");
+        transform.up = Vector3.up;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
