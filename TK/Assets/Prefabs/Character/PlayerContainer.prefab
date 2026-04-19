@@ -107,7 +107,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4564085887745278}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 46e6cdc1b56260c4c96de8512ec510f9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -20423,6 +20423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AntennaManager
   Antennas: []
+  Enemies: []
 --- !u!1001 &967315935917328046
 PrefabInstance:
   m_ObjectHideFlags: 0
