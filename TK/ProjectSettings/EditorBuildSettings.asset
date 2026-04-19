@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/level1.unity
     guid: 5a638ddb636d5df4480c4a12674e4aa5
   - enabled: 1
+    path: Assets/Scenes/shotgunlevel.unity
+    guid: ccce8902b60da5841a2c44be7f7ade26
+  - enabled: 1
     path: Assets/Scenes/levelX.unity
     guid: 3c0cee1eb51e7a84693636981d331afa
   m_configObjects:
