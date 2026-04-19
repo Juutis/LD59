@@ -6,4 +6,5 @@ public class GunConfig : ScriptableObject
     public float RateOfFire;
     public float Damage;
     public float Range;
+    public float SpreadAngle;
 }

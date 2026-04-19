@@ -15,3 +15,4 @@ MonoBehaviour:
   RateOfFire: 1.25
   Damage: 2
   Range: 20
+  SpreadAngle: 1

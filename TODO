@@ -1,3 +1,27 @@
 
 Todo:
-  ☐ Item
+  ☐ Guns
+    ☐ Gun has
+      ☐ Raycast(s)
+      ☐ Damage
+      ☐ Rate of fire
+      ☐ Magazine size
+      ☐ Reload time
+      ☐ Ammo
+    ☐ Pistol
+      ☐ Unlimited ammo
+    ☐ Shotgun
+    ☐ Rynkky
+    ☐ Sniper
+    ☐ Guns are pickupable on levels
+    ☐ Keep guns from one level to the next
+    ☐ If you die, reset gun state to the start of the level
+    ☐ 
+  ☐ Enemies
+  ☐ Map(s)
+  ☐ Target/goal
+    ☐ Signal station
+    ☐ Minigame?
+  ☐ Art
+    ☐ Buildings
+    ☐ 
