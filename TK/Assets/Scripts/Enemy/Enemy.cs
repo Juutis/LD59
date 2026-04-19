@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
 
 
     private GameObject player;
-    private EnemyState state;
+    private EnemyState state = EnemyState.PATROL;
 
     private Vector3 TargetLocation;
     private Vector3 TargetDirection;
@@ -47,12 +47,15 @@ public class Enemy : MonoBehaviour
 
     private float hurtTimer = 0;
 
+    private Vector3 patrolTarget;
+
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
         visionCheckLayers = LayerMask.GetMask("World", "Player");
         transform.up = Vector3.up;
+        transform.Rotate(Vector3.up, Random.Range(0f, 360f));
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -61,6 +64,15 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         UpdatePathing();
         GetComponent<CharacterHealth>().InitHealth(config.Health, Death, Hurt);
+        ResetPatrol();
+    }
+
+    private void ResetPatrol()
+    {
+        var maxOffset = 5.0f;
+        var offSet = new Vector3(Random.Range(-maxOffset, maxOffset), 0, Random.Range(-maxOffset, maxOffset));
+        patrolTarget = transform.position + offSet;
+        Invoke("ResetPatrol", Random.Range(3.0f, 8.0f));
     }
 
     private void Death()
@@ -112,6 +124,8 @@ public class Enemy : MonoBehaviour
 
     private void patrol()
     {
+        TargetLocation = patrolTarget;
+        TargetDirection = patrolTarget - transform.position;
         anim.Play(config.idleAnimation);
         checkPlayerVisibility();
     }
@@ -222,7 +236,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (Physics.Raycast(myPosition, dir, out var hit, 1000.0f, visionCheckLayers))
+        if (Physics.Raycast(myPosition + Vector3.up * 0.1f, dir, out var hit, 1000.0f, visionCheckLayers))
         {
             if (hit.collider.gameObject == player)
             {
@@ -268,7 +282,7 @@ public class Enemy : MonoBehaviour
             projectileRange = config.AttackRange * 1.5f;
         }
         var trailEnd = myPosition + dir.normalized * projectileRange;
-        if (Physics.Raycast(myPosition, dir, out var hit, projectileRange, visionCheckLayers))
+        if (Physics.Raycast(myPosition + 0.1f * Vector3.up, dir, out var hit, projectileRange, visionCheckLayers))
         {
             trailEnd = hit.point;
             if (hit.collider.gameObject == player)

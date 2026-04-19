@@ -13,4 +13,22 @@ MonoBehaviour:
   m_Name: EnemyConfig
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   Health: 5
-  Speed: 7
+  Speed: 2
+  TurnSpeed: 360
+  VisionRange: 4
+  VisionAngle: 70
+  SmellDistance: 1.5
+  AttackRange: 3
+  MinBurst: 8
+  MaxBurst: 10
+  AimingDuration: 0.6
+  TrackingDuration: 0.4
+  BackSwingDuration: 0.8
+  MinTimeBetweenBursts: 1
+  MaxTimeBetweenBursts: 1.5
+  FireRate: 10
+  AccuracyVariationDegrees: 20
+  idleAnimation: gun_idle
+  aimAnimation: gun_idle
+  attackAnimation: gun_idle
+  melee: 0
