@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class AntennaSwitch : MonoBehaviour
 {
+    private static int antennaCount;
+
     [SerializeField]
     private Sprite activated;
     private GameObject player;
@@ -17,6 +19,7 @@ public class AntennaSwitch : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         rend = GetComponent<SpriteRenderer>();
+        AntennaManager.Instance.Antennas.Add(this);
     }
 
     // Update is called once per frame
@@ -28,11 +31,14 @@ public class AntennaSwitch : MonoBehaviour
         playerPos.y = 0;
         if (Vector3.Distance(selfPos, playerPos) < 0.5f && !levelFinished)
         {
+            AntennaManager.Instance.Antennas.Remove(this);
             rend.sprite = activated;
             anim.enabled = true;
-            levelFinished = true;
-
-            Invoke("NextLevel", 1f);
+            if (AntennaManager.Instance.Antennas.Count == 0)
+            {
+                levelFinished = true;
+                Invoke("NextLevel", 1f);
+            }
         }
     }
 
