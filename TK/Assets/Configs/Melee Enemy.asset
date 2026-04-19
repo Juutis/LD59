@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Melee Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   Health: 5
-  Speed: 7
+  Speed: 2
   TurnSpeed: 360
   VisionRange: 10
   VisionAngle: 70
   SmellDistance: 1.5
-  AttackRange: 0.5
+  AttackRange: 0.8
   MinBurst: 1
   MaxBurst: 1
   AimingDuration: 0.4
   TrackingDuration: 0.4
   BackSwingDuration: 0.3
   MinTimeBetweenBursts: 1
-  MaxTimeBetweenBursts: 1.5
+  MaxTimeBetweenBursts: 1
   FireRate: 10
   AccuracyVariationDegrees: 0
   idleAnimation: melee_idle
