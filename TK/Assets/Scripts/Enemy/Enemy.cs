@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -61,6 +62,7 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        AntennaManager.Instance.Enemies.Add(this);
         player = GameObject.FindGameObjectWithTag("Player");
         UpdatePathing();
         GetComponent<CharacterHealth>().InitHealth(config.Health, Death, Hurt);
@@ -77,13 +79,14 @@ public class Enemy : MonoBehaviour
 
     private void Death()
     {
+        AntennaManager.Instance.Enemies.Remove(this);
         var body = Instantiate(bodyPrefab);
         body.transform.position = transform.position;
         body.transform.rotation = transform.rotation;
         Destroy(gameObject);
     }
 
-    private void Hurt()
+    public void Hurt()
     {
         hurtTimer = Time.time + 1.0f;
     }
@@ -210,6 +213,7 @@ public class Enemy : MonoBehaviour
         if (canSeePlayer())
         {
             state = EnemyState.ATTACK;
+            AntennaManager.Instance.Enemies.Where(it => Vector3.Distance(transform.position, it.transform.position) < 3.0f).ToList().ForEach(it => it.Hurt());
         }
     }
 
