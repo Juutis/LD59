@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407bba1143e09584f9b4486d84ec45cf, type: 3}
   m_Name: PistolConfig
   m_EditorClassIdentifier: Assembly-CSharp::GunConfig
-  RateOfFire: 1.25
+  RateOfFire: 3
   Damage: 2
   Range: 10
   SpreadAngle: 10
