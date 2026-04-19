@@ -13,10 +13,8 @@ public class Shotgun : BaseGun
 
     public new bool Shoot()
     {
-        Debug.Log($"Shotgun pum {Time.time - lastShot} | {(1 / rateOfFire)} | {(Time.time - lastShot) > (1 / rateOfFire)}");
         if (Time.time - lastShot > (1 / rateOfFire))
         {
-            Debug.Log("Shooting");
             lastShot = Time.time;
             shootEffect.Play();
 
@@ -34,7 +32,6 @@ public class Shotgun : BaseGun
                 if (Physics.Raycast(transform.position, dir, out RaycastHit hit, range))
                 {
                     trailEnd = hit.point;
-                    Debug.Log("Hit");
 
                     if (hit.collider.tag == "Enemy")
                     {
