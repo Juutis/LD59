@@ -19,4 +19,10 @@ public class EnemyConfig : ScriptableObject
     public float MaxTimeBetweenBursts = 1.5f;
     public float FireRate = 10;
     public float AccuracyVariationDegrees = 20;
+
+    public string idleAnimation = "gun_idle";
+    public string aimAnimation = "gun_idle";
+    public string attackAnimation = "gun_idle";
+    public bool melee = false;
+    
 }
