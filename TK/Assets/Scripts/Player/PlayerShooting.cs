@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,7 +32,7 @@ public class PlayerShooting : MonoBehaviour
         selectGun4 = InputSystem.actions.FindAction("SelectGun4");
         shootAction = InputSystem.actions.FindAction("Attack");
 
-        ammos = GameManager.instance.GetAmmos();
+        ammos = GameManager.instance.GetLevelStartAmmos().ToList().ToArray();
         GameManager.instance.SetPlayerShooting(this);
 
         Cursor.lockState = CursorLockMode.Confined;
@@ -98,7 +99,6 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"Triggered by {other.name} {other.tag}");
         if (other != null && other.tag == "Crate")
         {
             if (other.gameObject.TryGetComponent(out GunCrate crate))

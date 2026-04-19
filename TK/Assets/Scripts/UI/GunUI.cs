@@ -23,6 +23,6 @@ public class GunUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ammoCount.text = GameManager.instance.GetAmmos()[(int)gunType].ToString();
+        ammoCount.text = GameManager.instance.GetCurrentAmmos()[(int)gunType].ToString();
     }
 }

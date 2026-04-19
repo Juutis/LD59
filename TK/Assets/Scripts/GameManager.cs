@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,6 +21,7 @@ public class GameManager : MonoBehaviour
         else
         {
             instance = this;
+            transform.SetParent(null);
 
             DontDestroyOnLoad(this.gameObject);
         }
@@ -31,12 +33,12 @@ public class GameManager : MonoBehaviour
     }
     public void EndLevel()
     {
-        currentLevelAmmos = playerShooting.GetAmmos();
+        currentLevelAmmos = playerShooting.GetAmmos().ToList().ToArray();
         currentLevel++;
         SceneManager.LoadScene(currentLevel);
     }
 
-    public int[] GetAmmos()
+    public int[] GetLevelStartAmmos()
     {
         if (currentLevel == 0)
         {
@@ -46,5 +48,10 @@ public class GameManager : MonoBehaviour
         {
             return currentLevelAmmos;
         }
+    }
+
+    public int[] GetCurrentAmmos()
+    {
+        return playerShooting.GetAmmos();
     }
 }
