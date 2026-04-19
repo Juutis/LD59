@@ -7,6 +7,9 @@ public class CharacterHealth : MonoBehaviour
     private float maxHealth;
     private Action deathAction;
 
+    [SerializeField]
+    private GameObject bloodPrefab;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,12 +29,17 @@ public class CharacterHealth : MonoBehaviour
         this.deathAction = deathAction;
     }
 
-    public void Hurt(float damage)
+    public void Hurt(float damage, Vector3 direction)
     {
         health -= damage;
+        var blood = Instantiate(bloodPrefab);
+        blood.transform.position = transform.position;
+        direction.y = 0;
+        blood.transform.LookAt(transform.position - direction, Vector3.up);
 
         if (health <= 0)
         {
+            transform.LookAt(transform.position - direction, Vector3.up);
             Kill();
         }
     }

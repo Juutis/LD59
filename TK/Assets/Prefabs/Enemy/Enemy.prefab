@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371fe55e9fd05bb459987aa006879d3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterHealth
+  bloodPrefab: {fileID: 8143046877207497643, guid: 2db4f0cfcf043ec48b3ab4b3a30b0d19, type: 3}
 --- !u!136 &7930979237288172995
 CapsuleCollider:
   m_ObjectHideFlags: 0

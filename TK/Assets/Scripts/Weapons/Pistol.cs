@@ -20,7 +20,7 @@ public class Pistol : BaseGun
 
             var trailEnd = transform.position + dir * range * 4;
 
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, range))
+            if (Physics.Raycast(transform.position, dir, out RaycastHit hit, range))
             {
                 trailEnd = hit.point;
                 
@@ -28,7 +28,7 @@ public class Pistol : BaseGun
                 {
                     if (hit.collider.gameObject.TryGetComponent(out CharacterHealth enemy))
                     {
-                        enemy.Hurt(damage);
+                        enemy.Hurt(damage, dir);
                     }
                 }
             }
