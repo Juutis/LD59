@@ -6,6 +6,7 @@ public class CharacterHealth : MonoBehaviour
     private float health;
     private float maxHealth;
     private Action deathAction;
+    private Action hurtAction;
 
     [SerializeField]
     private GameObject bloodPrefab;
@@ -24,11 +25,12 @@ public class CharacterHealth : MonoBehaviour
         
     }
 
-    public void InitHealth(float initialHealth, Action deathAction)
+    public void InitHealth(float initialHealth, Action deathAction, Action hurtAction)
     {
         health = initialHealth;
         maxHealth = initialHealth;
         this.deathAction = deathAction;
+        this.hurtAction = hurtAction;
     }
 
     public void Hurt(float damage, Vector3 direction)
@@ -38,6 +40,10 @@ public class CharacterHealth : MonoBehaviour
         blood.transform.position = transform.position;
         direction.y = 0;
         blood.transform.LookAt(transform.position - direction, Vector3.up);
+        if (hurtAction != null)
+        {
+            hurtAction();
+        }
 
         if (health <= 0 && !dead)
         {

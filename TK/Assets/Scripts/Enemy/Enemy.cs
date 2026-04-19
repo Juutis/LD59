@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour
     private float backSwingTimer;
     private float burstTimer;
 
+    private float hurtTimer = 0;
+
 
     void Awake()
     {
@@ -58,7 +60,7 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         UpdatePathing();
-        GetComponent<CharacterHealth>().InitHealth(config.Health, Death);
+        GetComponent<CharacterHealth>().InitHealth(config.Health, Death, Hurt);
     }
 
     private void Death()
@@ -67,6 +69,11 @@ public class Enemy : MonoBehaviour
         body.transform.position = transform.position;
         body.transform.rotation = transform.rotation;
         Destroy(gameObject);
+    }
+
+    private void Hurt()
+    {
+        hurtTimer = Time.time + 1.0f;
     }
 
     // Update is called once per frame
@@ -194,6 +201,11 @@ public class Enemy : MonoBehaviour
 
     private bool canSeePlayer()
     {
+        if (hurtTimer > Time.time)
+        {
+            return true;
+        }
+        
         var distanceToPlayer = Vector3.Distance(myPosition, player.transform.position);
         var dir = player.transform.position - myPosition;
 

@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         speed = playerConfig.Speed;
 
         health = GetComponent<CharacterHealth>();
-        health.InitHealth(playerConfig.Health, Death);
+        health.InitHealth(playerConfig.Health, Death, null);
     }
 
     // Update is called once per frame
