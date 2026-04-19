@@ -51,4 +51,9 @@ public class CharacterHealth : MonoBehaviour
     {
         deathAction();
     }
+
+    public float GetHealth()
+    {
+        return health;
+    }
 }

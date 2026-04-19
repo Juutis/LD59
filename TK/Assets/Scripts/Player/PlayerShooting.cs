@@ -18,8 +18,6 @@ public class PlayerShooting : MonoBehaviour
     private InputAction selectGun3;
     private InputAction selectGun4;
 
-    private bool[] hasGun;
-
     private int selectedGun = 0;
 
     private int[] ammos;
@@ -32,29 +30,29 @@ public class PlayerShooting : MonoBehaviour
         selectGun3 = InputSystem.actions.FindAction("SelectGun3");
         selectGun4 = InputSystem.actions.FindAction("SelectGun4");
         shootAction = InputSystem.actions.FindAction("Attack");
-        ammos = new int[4] { 0, 0, 0, 0 };
-        hasGun = new bool[4] { true, false, false, false };
+        ammos = GameManager.instance.GetAmmos();
+        GameManager.instance.SetPlayerShooting(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasGun[(int)GunType.Pistol] && selectGun1.WasPerformedThisFrame())
+        if (selectGun1.WasPerformedThisFrame())
         {
             Debug.Log("Gun 1 selected");
             selectedGun = (int)GunType.Pistol;
         }
-        else if (hasGun[(int)GunType.Shotgun] && selectGun2.WasPerformedThisFrame() && ammos[1] > 0)
+        else if (selectGun2.WasPerformedThisFrame() && ammos[1] > 0)
         {
             Debug.Log("Gun 2 selected");
             selectedGun = (int)GunType.Shotgun;
         }
-        else if (hasGun[(int)GunType.MachineGun] && selectGun3.WasPerformedThisFrame() && ammos[2] > 0)
+        else if (selectGun3.WasPerformedThisFrame() && ammos[2] > 0)
         {
             Debug.Log("Gun 3 selected");
             selectedGun = (int)GunType.MachineGun;
         }
-        else if (hasGun[(int)GunType.Sniper] && selectGun4.WasPerformedThisFrame() && ammos[3] > 0)
+        else if (selectGun4.WasPerformedThisFrame() && ammos[3] > 0)
         {
             Debug.Log("Gun 4 selected");
             selectedGun = (int)GunType.Sniper;
@@ -62,7 +60,7 @@ public class PlayerShooting : MonoBehaviour
 
         bool hasAmmo = ammos[selectedGun] > 0 || selectedGun == 0;
 
-        if (shootAction.IsPressed() && hasAmmo && hasGun[selectedGun])
+        if (shootAction.IsPressed() && hasAmmo)
         {
             bool didShoot = false;
 
@@ -89,6 +87,11 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
+    public int[] GetAmmos()
+    {
+        return ammos;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log($"Triggered by {other.name} {other.tag}");
@@ -98,7 +101,6 @@ public class PlayerShooting : MonoBehaviour
             {
                 int gun = (int)crate.GunType;
                 ammos[gun] += crate.AmmoAmount;
-                hasGun[gun] = true;
             }
 
             Destroy(other.gameObject);
