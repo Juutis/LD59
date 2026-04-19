@@ -13,7 +13,7 @@ public class Crosshair : MonoBehaviour
     void LateUpdate()
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
-        Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.y - 1));
-        transform.position = new Vector3(pos.x, 1, pos.z);
+        Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, 1));
+        transform.position = new Vector3(pos.x, Camera.main.transform.position.y - 1, pos.z);
     }
 }

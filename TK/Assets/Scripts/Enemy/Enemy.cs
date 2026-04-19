@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private EnemyConfig config;
 
+    [SerializeField]
+    private Animator anim;
+
 
     private GameObject player;
     private EnemyState state;
@@ -95,12 +98,14 @@ public class Enemy : MonoBehaviour
 
     private void idle()
     {
+        anim.Play(config.idleAnimation);
         TargetLocation = myPosition;
         checkPlayerVisibility();
     }
 
     private void patrol()
     {
+        anim.Play(config.idleAnimation);
         checkPlayerVisibility();
     }
 
@@ -116,6 +121,7 @@ public class Enemy : MonoBehaviour
         switch (attackState)
         {
             case AttackState.PREPARE:
+                anim.Play(config.aimAnimation);
                 moveTarget = myPosition;
                 if (trackingTimer > Time.time)
                 {
@@ -128,6 +134,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case AttackState.SHOOT:
+                anim.Play(config.attackAnimation);
                 moveTarget = myPosition;
                 if (burstRemaining > 0)
                 {
@@ -145,6 +152,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case AttackState.BACKSWING:
+                anim.Play(config.attackAnimation);
                 moveTarget = myPosition;
                 if (backSwingTimer < Time.time)
                 {
@@ -153,6 +161,7 @@ public class Enemy : MonoBehaviour
                 }
                 break;
             case AttackState.PURSUE:
+                anim.Play(config.idleAnimation);
                 if (hasVision)
                 {
                     TargetDirection = playerDir;
@@ -241,16 +250,26 @@ public class Enemy : MonoBehaviour
         var dispersion = Random.Range(-config.AccuracyVariationDegrees, config.AccuracyVariationDegrees);
         var dispersionQuat = Quaternion.AngleAxis(dispersion, Vector3.up);
         var dir = dispersionQuat * TargetDirection;
-        var trailEnd = myPosition + dir.normalized * config.AttackRange * 4;
-        if (Physics.Raycast(myPosition, dir, out var hit, config.AttackRange * 4, visionCheckLayers))
+        var projectileRange = config.AttackRange * 4;
+        if (config.melee)
+        {
+            projectileRange = config.AttackRange * 1.5f;
+        }
+        var trailEnd = myPosition + dir.normalized * projectileRange;
+        if (Physics.Raycast(myPosition, dir, out var hit, projectileRange, visionCheckLayers))
         {
             trailEnd = hit.point;
             if (hit.collider.gameObject == player)
             {
+                var health = hit.collider.GetComponent<CharacterHealth>();
+                health.Hurt(1, dir);
             }
         }
-        var bulletTrail = Instantiate(bulletTrailPrefab);
-        bulletTrail.Init(myPosition, trailEnd);
+        if (!config.melee)
+        {
+            var bulletTrail = Instantiate(bulletTrailPrefab);
+            bulletTrail.Init(myPosition, trailEnd);
+        }
     }
 
     

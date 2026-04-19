@@ -51,6 +51,7 @@ MonoBehaviour:
   bulletTrailPrefab: {fileID: 8711352348840058643, guid: c3fd6ec575c98e2448512aae3213754b, type: 3}
   bodyPrefab: {fileID: 449208500885496594, guid: da345bebe07b44e418fc9658f55efda4, type: 3}
   config: {fileID: 11400000, guid: d9a73a049a31665469b179f201aea618, type: 2}
+  anim: {fileID: 544041235849912837}
 --- !u!54 &6188188695320200769
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -186,5 +187,10 @@ PrefabInstance:
 --- !u!4 &241195061462333355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6741877005004589609, guid: 24f7039ac0aa6de4f92cf9747775ec92, type: 3}
+  m_PrefabInstance: {fileID: 6833949427559185794}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &544041235849912837 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6438953762439143303, guid: 24f7039ac0aa6de4f92cf9747775ec92, type: 3}
   m_PrefabInstance: {fileID: 6833949427559185794}
   m_PrefabAsset: {fileID: 0}

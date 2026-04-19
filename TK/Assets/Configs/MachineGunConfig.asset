@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407bba1143e09584f9b4486d84ec45cf, type: 3}
   m_Name: MachineGunConfig
   m_EditorClassIdentifier: Assembly-CSharp::GunConfig
-  RateOfFire: 4
+  RateOfFire: 8
   Damage: 5
   Range: 20
   SpreadAngle: 14

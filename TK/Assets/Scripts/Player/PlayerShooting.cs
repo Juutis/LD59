@@ -30,8 +30,12 @@ public class PlayerShooting : MonoBehaviour
         selectGun3 = InputSystem.actions.FindAction("SelectGun3");
         selectGun4 = InputSystem.actions.FindAction("SelectGun4");
         shootAction = InputSystem.actions.FindAction("Attack");
+
         ammos = GameManager.instance.GetAmmos();
         GameManager.instance.SetPlayerShooting(this);
+
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
