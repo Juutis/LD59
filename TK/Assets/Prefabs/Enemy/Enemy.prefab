@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6188188695320200769}
   - component: {fileID: 5215947635081651457}
   - component: {fileID: 7930979237288172995}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.2
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
@@ -123,6 +123,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6999567205758284588}
     m_Modifications:
+    - target: {fileID: 3603824104510805532, guid: 24f7039ac0aa6de4f92cf9747775ec92, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3711509006562044824, guid: 24f7039ac0aa6de4f92cf9747775ec92, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6741877005004589609, guid: 24f7039ac0aa6de4f92cf9747775ec92, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -175,9 +183,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6865548602497278711, guid: 24f7039ac0aa6de4f92cf9747775ec92, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7255609954694028445, guid: 24f7039ac0aa6de4f92cf9747775ec92, type: 3}
       propertyPath: m_Name
       value: EnemyGraphics
+      objectReference: {fileID: 0}
+    - target: {fileID: 7255609954694028445, guid: 24f7039ac0aa6de4f92cf9747775ec92, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278849025107527604, guid: 24f7039ac0aa6de4f92cf9747775ec92, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -27,9 +27,9 @@ public class Shotgun : BaseGun
                 float currentAngle = randomSpread + angle + angleStep * i;
                 Vector3 dir = Quaternion.AngleAxis(currentAngle, Vector3.up) * transform.forward;
 
-                var trailEnd = transform.position + dir * range * 4;
+                var trailEnd = transform.position + dir * range;
 
-                if (Physics.Raycast(transform.position, dir, out RaycastHit hit, range))
+                if (Physics.Raycast(transform.position, dir, out RaycastHit hit, range, targetLayerMask))
                 {
                     trailEnd = hit.point;
 

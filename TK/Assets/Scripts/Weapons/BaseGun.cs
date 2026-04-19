@@ -16,10 +16,12 @@ public class BaseGun : MonoBehaviour
     protected float spreadAngle;
 
     protected float lastShot = 0;
+    protected int targetLayerMask;
 
     private void Start()
     {
         Init();
+        targetLayerMask = LayerMask.GetMask("World", "Enemy");
     }
 
     protected void Init()
