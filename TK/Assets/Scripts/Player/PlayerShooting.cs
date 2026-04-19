@@ -18,10 +18,7 @@ public class PlayerShooting : MonoBehaviour
     private InputAction selectGun3;
     private InputAction selectGun4;
 
-    private bool hasGun1 = true;
-    private bool hasGun2 = true;
-    private bool hasGun3 = true;
-    private bool hasGun4 = true;
+    private bool[] hasGun;
 
     private int selectedGun = 0;
 
@@ -35,51 +32,52 @@ public class PlayerShooting : MonoBehaviour
         selectGun3 = InputSystem.actions.FindAction("SelectGun3");
         selectGun4 = InputSystem.actions.FindAction("SelectGun4");
         shootAction = InputSystem.actions.FindAction("Attack");
-        ammos = new int[4] { 0, 10, 30, 5 };
+        ammos = new int[4] { 0, 0, 0, 0 };
+        hasGun = new bool[4] { true, false, false, false };
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hasGun1 && selectGun1.WasPerformedThisFrame())
+        if (hasGun[(int)GunType.Pistol] && selectGun1.WasPerformedThisFrame())
         {
             Debug.Log("Gun 1 selected");
-            selectedGun = 0;
+            selectedGun = (int)GunType.Pistol;
         }
-        else if (hasGun2 && selectGun2.WasPerformedThisFrame() && ammos[1] > 0)
+        else if (hasGun[(int)GunType.Shotgun] && selectGun2.WasPerformedThisFrame() && ammos[1] > 0)
         {
             Debug.Log("Gun 2 selected");
-            selectedGun = 1;
+            selectedGun = (int)GunType.Shotgun;
         }
-        else if (hasGun3 && selectGun3.WasPerformedThisFrame() && ammos[2] > 0)
+        else if (hasGun[(int)GunType.MachineGun] && selectGun3.WasPerformedThisFrame() && ammos[2] > 0)
         {
             Debug.Log("Gun 3 selected");
-            selectedGun = 2;
+            selectedGun = (int)GunType.MachineGun;
         }
-        else if (hasGun4 && selectGun4.WasPerformedThisFrame() && ammos[3] > 0)
+        else if (hasGun[(int)GunType.Sniper] && selectGun4.WasPerformedThisFrame() && ammos[3] > 0)
         {
             Debug.Log("Gun 4 selected");
-            selectedGun = 3;
+            selectedGun = (int)GunType.Sniper;
         }
 
         bool hasAmmo = ammos[selectedGun] > 0 || selectedGun == 0;
 
-        if (shootAction.IsPressed() && hasAmmo)
+        if (shootAction.IsPressed() && hasAmmo && hasGun[selectedGun])
         {
             bool didShoot = false;
 
             switch(selectedGun)
             {
-                case 0:
+                case (int)GunType.Pistol:
                     didShoot = gun1.Shoot();
                     break;
-                case 1:
+                case (int)GunType.Shotgun:
                     didShoot = gun2.Shoot();
                     break;
-                case 2:
+                case (int)GunType.MachineGun:
                     didShoot = gun3.Shoot();
                     break;
-                case 3:
+                case (int)GunType.Sniper:
                     didShoot = gun4.Shoot();
                     break;
             }
@@ -90,4 +88,28 @@ public class PlayerShooting : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"Triggered by {other.name} {other.tag}");
+        if (other != null && other.tag == "Crate")
+        {
+            if (other.gameObject.TryGetComponent(out GunCrate crate))
+            {
+                int gun = (int)crate.GunType;
+                ammos[gun] += crate.AmmoAmount;
+                hasGun[gun] = true;
+            }
+
+            Destroy(other.gameObject);
+        }
+    }
+}
+
+public enum GunType
+{
+    Pistol = 0,
+    Shotgun = 1,
+    MachineGun = 2,
+    Sniper = 3
 }
