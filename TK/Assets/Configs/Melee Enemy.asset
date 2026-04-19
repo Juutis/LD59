@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Melee Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   Health: 5
-  Speed: 2
+  Speed: 2.5
   TurnSpeed: 360
-  VisionRange: 10
+  VisionRange: 4
   VisionAngle: 70
   SmellDistance: 1.5
   AttackRange: 0.8

@@ -6,16 +6,10 @@ public class AntennaManager : MonoBehaviour
     public static AntennaManager Instance;
 
     public List<AntennaSwitch> Antennas = new();
+    public List<Enemy> Enemies = new();
 
     void Awake()
     {
-        if (Instance != null)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
+        Instance = this;
     }
 }
