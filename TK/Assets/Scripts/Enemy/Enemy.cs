@@ -6,7 +6,11 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private BulletTrail bulletTrailPrefab;
     [SerializeField]
+    private GameObject bodyPrefab;
+
+    [SerializeField]
     private EnemyConfig config;
+
 
     private GameObject player;
     private EnemyState state;
@@ -28,24 +32,7 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody rb;
 
-    private float movementSpeed;
-    private float turnSpeed = 360.0f;
-
     private int visionCheckLayers;
-    private float visionRange = 10;
-    private float visionAngle = 70;
-    private float smellDistance = 1.5f;
-
-    private float attackRange = 3.0f;
-    private int minBurst = 8;
-    private int maxBurst = 10;
-    private float aimingDuration = 0.6f;
-    private float trackingDuration = 0.4f;
-    private float backSwingDuration = 0.8f;
-    private float minTimeBetweenBursts = 1.0f;
-    private float maxTimeBetweenBursts = 1.5f;
-    private float fireRate = 10;
-    private float accuracyDegrees = 20;
 
     private int burstRemaining = 0;
     private AttackState attackState = AttackState.PURSUE;
@@ -67,12 +54,14 @@ public class Enemy : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         UpdatePathing();
-        movementSpeed = config.Speed;
         GetComponent<CharacterHealth>().InitHealth(config.Health, Death);
     }
 
     private void Death()
     {
+        var body = Instantiate(bodyPrefab);
+        body.transform.position = transform.position;
+        body.transform.rotation = transform.rotation;
         Destroy(gameObject);
     }
 
@@ -134,7 +123,7 @@ public class Enemy : MonoBehaviour
                 if (aimingTimer < Time.time)
                 {
                     attackState = AttackState.SHOOT;
-                    burstRemaining = Random.Range(minBurst, maxBurst + 1);
+                    burstRemaining = Random.Range(config.MinBurst, config.MaxBurst + 1);
                 }
                 break;
             case AttackState.SHOOT:
@@ -144,14 +133,14 @@ public class Enemy : MonoBehaviour
                     if (shootTimer < Time.time)
                     {
                         shoot();
-                        shootTimer = Time.time + 1.0f / fireRate;
+                        shootTimer = Time.time + 1.0f / config.FireRate;
                         burstRemaining--;
                     }
                 }
                 else
                 {
                     attackState = AttackState.BACKSWING;
-                    backSwingTimer = Time.time + backSwingDuration;
+                    backSwingTimer = Time.time + config.BackSwingDuration;
                 }
                 break;
             case AttackState.BACKSWING:
@@ -159,21 +148,21 @@ public class Enemy : MonoBehaviour
                 if (backSwingTimer < Time.time)
                 {
                     attackState = AttackState.PURSUE;
-                    burstTimer = Time.time + Random.Range(minTimeBetweenBursts, maxTimeBetweenBursts);
+                    burstTimer = Time.time + Random.Range(config.MinTimeBetweenBursts, config.MaxTimeBetweenBursts);
                 }
                 break;
             case AttackState.PURSUE:
                 if (hasVision)
                 {
                     TargetDirection = playerDir;
-                    if (Vector3.Distance(myPosition, player.transform.position) < attackRange)
+                    if (Vector3.Distance(myPosition, player.transform.position) < config.AttackRange)
                     {
                         moveTarget = myPosition;
                         if (burstTimer < Time.time)
                         {
                             attackState = AttackState.PREPARE;
-                            aimingTimer = Time.time + aimingDuration;
-                            trackingTimer = Time.time + trackingDuration;
+                            aimingTimer = Time.time + config.AimingDuration;
+                            trackingTimer = Time.time + config.TrackingDuration;
                         }
                     }
                 }
@@ -199,13 +188,13 @@ public class Enemy : MonoBehaviour
         var dir = player.transform.position - myPosition;
 
         // ignore vision if player is close enough
-        if (distanceToPlayer > smellDistance)
+        if (distanceToPlayer > config.SmellDistance)
         {
-            if (distanceToPlayer > visionRange)
+            if (distanceToPlayer > config.VisionRange)
             {
                 return false;
             }
-            if (Vector3.Angle(transform.forward, dir) > visionAngle)
+            if (Vector3.Angle(transform.forward, dir) > config.VisionAngle)
             {
                 return false;
             }
@@ -225,7 +214,7 @@ public class Enemy : MonoBehaviour
     {
         if (Vector3.Distance(myPosition, moveTarget) > TARGET_LOCATION_MARGIN)
         {
-            rb.linearVelocity = (moveTarget - myPosition).normalized * movementSpeed;
+            rb.linearVelocity = (moveTarget - myPosition).normalized * config.Speed;
         }
         else
         {
@@ -241,18 +230,18 @@ public class Enemy : MonoBehaviour
         }
 
         var rotation = Vector3.SignedAngle(transform.forward, TargetDirection, Vector3.up);
-        var maxRotationPerTick = Time.deltaTime * turnSpeed;
+        var maxRotationPerTick = Time.deltaTime * config.TurnSpeed;
         var rotationPerTick = Mathf.Clamp(rotation, -maxRotationPerTick, maxRotationPerTick);
         transform.Rotate(transform.up, rotationPerTick);
     }
 
     private void shoot()
     {
-        var dispersion = Random.Range(-accuracyDegrees, accuracyDegrees);
+        var dispersion = Random.Range(-config.AccuracyVariationDegrees, config.AccuracyVariationDegrees);
         var dispersionQuat = Quaternion.AngleAxis(dispersion, Vector3.up);
         var dir = dispersionQuat * TargetDirection;
-        var trailEnd = myPosition + dir.normalized * attackRange * 4;
-        if (Physics.Raycast(myPosition, dir, out var hit, attackRange * 4, visionCheckLayers))
+        var trailEnd = myPosition + dir.normalized * config.AttackRange * 4;
+        if (Physics.Raycast(myPosition, dir, out var hit, config.AttackRange * 4, visionCheckLayers))
         {
             trailEnd = hit.point;
             if (hit.collider.gameObject == player)
