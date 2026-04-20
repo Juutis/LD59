@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
         this.playerHealth = playerHealth;
     }
 
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene(currentLevel);
+    }
+
     public void EndLevel()
     {
         currentLevelAmmos = playerShooting.GetAmmos().ToList().ToArray();
