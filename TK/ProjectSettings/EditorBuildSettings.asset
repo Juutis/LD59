@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/streetsrunred.unity
     guid: 052a5a81182001e4aa97187659a29b46
+  - enabled: 1
+    path: Assets/Scenes/levelSPACE.unity
+    guid: dcaa78c672a13d04e9f52358b2ab2928
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
