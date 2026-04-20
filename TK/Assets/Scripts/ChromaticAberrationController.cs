@@ -10,7 +10,7 @@ public class ChromaticAberrationController : MonoBehaviour
     private ChromaticAberration chromatic;
 
     private float triggered = -1;
-    private float duration = 0.8f;
+    private float duration = 1.2f;
     private float intensity = 1.0f;
 
     void Awake() {

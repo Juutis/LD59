@@ -14,10 +14,10 @@ public class ScrollingText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var speed = 100.0f;
+        var speed = 80.0f / 1080 * Camera.main.pixelHeight;
         if (nextLevelAction.IsPressed())
         {
-            speed = speed * 20;
+            speed = speed * 25;
         }
         transform.position += Vector3.up * speed * Time.deltaTime;
         if (transform.position.y > 400)

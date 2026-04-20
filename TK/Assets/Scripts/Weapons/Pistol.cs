@@ -12,7 +12,10 @@ public class Pistol : BaseGun
         if ((Time.time - lastShot) > (1 / rateOfFire))
         {
             lastShot = Time.time;
-            shootEffect.Play();
+            if (shootEffect != null)
+            {
+                shootEffect.Play();
+            }
 
             float currentAngle = Random.Range(0, spreadAngle) - spreadAngle / 2f;
             Vector3 dir = Quaternion.AngleAxis(currentAngle, Vector3.up) * transform.forward;

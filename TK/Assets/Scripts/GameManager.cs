@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private PlayerShooting playerShooting;
     private CharacterHealth playerHealth;
 
-    private int currentLevel = 0;
+    private int currentLevel = 1;
 
     private void Awake()
     {
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
 
     public int[] GetLevelStartAmmos()
     {
-        if (currentLevel == 0)
+        if (currentLevel <= 1)
         {
             return new int[5] { 0, 0, 0, 0, 0 };
         }

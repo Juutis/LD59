@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Pistol
   bulletTrailPrefab: {fileID: 695046848605259117, guid: e065fa9833bfe4640affddcb9fbb3ec4, type: 3}
   config: {fileID: 11400000, guid: aeef51d4c7fecd540bcf2a39737a5bdb, type: 2}
-  shootEffect: {fileID: 3964189469363241184}
+  shootEffect: {fileID: 0}
   audioSource: {fileID: 2865463419259274265}
   gunSound: {fileID: 8300000, guid: bb31f40d7b832394c800cc1ba6f8ed18, type: 3}
 --- !u!1 &6467545097396196612
