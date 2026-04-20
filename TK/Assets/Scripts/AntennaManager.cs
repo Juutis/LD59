@@ -16,6 +16,8 @@ public class AntennaManager : MonoBehaviour
 
     private InputAction nextLevelAction;
 
+    public bool Died = false;
+
     void Awake()
     {
         Instance = this;
@@ -27,6 +29,11 @@ public class AntennaManager : MonoBehaviour
         if (nextLevelAction.WasPerformedThisFrame() && levelFinished)
         {
             NextLevel();
+        }
+
+        if (nextLevelAction.WasPerformedThisFrame() && Died)
+        {
+            Death();
         }
     }
 
@@ -43,5 +50,10 @@ public class AntennaManager : MonoBehaviour
     void NextLevel()
     {
         GameManager.instance.EndLevel();
+    }
+
+    private void Death()
+    {
+        GameManager.instance.RestartLevel();
     }
 }
