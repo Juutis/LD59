@@ -131,7 +131,7 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                }
+                },
                 {
                     "name": "SelectGun5",
                     "type": "Button",
