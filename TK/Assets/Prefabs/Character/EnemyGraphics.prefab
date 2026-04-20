@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: ba0919f600f387345ab172c119aa643f, type: 2}
+    - target: {fileID: 1275515722950922794, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1275515722950922794, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -856302401
+      objectReference: {fileID: 0}
     - target: {fileID: 5849757873927238368, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -56,6 +64,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 1210002610, guid: ff847a819907bf94ea607d08c97fba2e, type: 3}
+    - target: {fileID: 6825532356302162962, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825532356302162962, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -856302401
+      objectReference: {fileID: 0}
     - target: {fileID: 7498612600775976020, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
       propertyPath: m_Name
       value: EnemyGraphics

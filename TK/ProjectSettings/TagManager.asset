@@ -43,6 +43,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Blood
+    uniqueID: 1341427707
+    locked: 0
+  - name: Body
+    uniqueID: 2248606677
+    locked: 0
+  - name: Enemy
+    uniqueID: 3438664895
+    locked: 0
+  - name: Pickup
+    uniqueID: 4070211121
+    locked: 0
+  - name: Player
+    uniqueID: 3145443047
+    locked: 0
+  - name: Effects
+    uniqueID: 3770090327
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
