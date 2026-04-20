@@ -31,6 +31,8 @@ public class Pistol : BaseGun
                     if (hit.collider.gameObject.TryGetComponent(out CharacterHealth enemy))
                     {
                         enemy.Hurt(damage, dir);
+                        ScreenShake.Instance.Shake(0.25f);
+                        ChromaticAberrationController.Instance.Trigger(0.25f);
                     }
                 }
             }
