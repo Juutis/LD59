@@ -97,6 +97,11 @@ public class PlayerShooting : MonoBehaviour
         return ammos;
     }
 
+    public int GetActiveGun()
+    {
+        return selectedGun;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other != null && other.tag == "Crate")

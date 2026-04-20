@@ -55,5 +55,11 @@ public class PlayerMovement : MonoBehaviour
     private void Death()
     {
         Debug.Log("GAME OVER");
+        Invoke("DelayedDeath", 1f);
+    }
+
+    private void DelayedDeath()
+    {
+        GameManager.instance.RestartLevel();
     }
 }

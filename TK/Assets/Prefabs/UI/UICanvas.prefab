@@ -720,6 +720,18 @@ PrefabInstance:
       propertyPath: infinite
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6191314067093596433, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: activeGun
+      value: 
+      objectReference: {fileID: 815085867, guid: c69531c5debf1a1408739d037889f461, type: 3}
+    - target: {fileID: 6191314067093596433, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: normalGun
+      value: 
+      objectReference: {fileID: 1082220460, guid: c69531c5debf1a1408739d037889f461, type: 3}
+    - target: {fileID: 6191314067093596433, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: disabledGun
+      value: 
+      objectReference: {fileID: 660361913, guid: c69531c5debf1a1408739d037889f461, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -834,6 +846,18 @@ PrefabInstance:
       propertyPath: infinite
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6191314067093596433, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: activeGun
+      value: 
+      objectReference: {fileID: 1944126034, guid: c69531c5debf1a1408739d037889f461, type: 3}
+    - target: {fileID: 6191314067093596433, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: normalGun
+      value: 
+      objectReference: {fileID: -543988025, guid: c69531c5debf1a1408739d037889f461, type: 3}
+    - target: {fileID: 6191314067093596433, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: disabledGun
+      value: 
+      objectReference: {fileID: -1040993925, guid: c69531c5debf1a1408739d037889f461, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -948,6 +972,18 @@ PrefabInstance:
       propertyPath: infinite
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6191314067093596433, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: activeGun
+      value: 
+      objectReference: {fileID: -1258866701, guid: c69531c5debf1a1408739d037889f461, type: 3}
+    - target: {fileID: 6191314067093596433, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: normalGun
+      value: 
+      objectReference: {fileID: 1679360363, guid: c69531c5debf1a1408739d037889f461, type: 3}
+    - target: {fileID: 6191314067093596433, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: disabledGun
+      value: 
+      objectReference: {fileID: -1749173293, guid: c69531c5debf1a1408739d037889f461, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1049,6 +1085,22 @@ PrefabInstance:
     - target: {fileID: 4457840047143431991, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
       propertyPath: m_Name
       value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983114365949096060, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983114365949096060, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983114365949096060, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4983114365949096060, guid: 5a9b3feed8f30734e8c55f692d7de3c6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
