@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: config
       value: 
       objectReference: {fileID: 11400000, guid: 4ecd7a6b31df3ee4b9312e472822b790, type: 2}
+    - target: {fileID: 8580514664960342495, guid: 8b53a3a58a233544e9d308c9c1bb2971, type: 3}
+      propertyPath: shootSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 83ee9e5420de4dc4b83784de69a35faa, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

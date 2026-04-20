@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4377137341273291781}
   - component: {fileID: 7476663685813191172}
   - component: {fileID: 2201909571307413843}
+  - component: {fileID: 2865463419259274265}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -198,6 +199,103 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterHealth
   bloodPrefab: {fileID: 8143046877207497643, guid: 2db4f0cfcf043ec48b3ab4b3a30b0d19, type: 3}
+--- !u!82 &2865463419259274265
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4564085887745278}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1101499243428439701
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +388,8 @@ MonoBehaviour:
   bulletTrailPrefab: {fileID: 8711352348840058643, guid: c3fd6ec575c98e2448512aae3213754b, type: 3}
   config: {fileID: 11400000, guid: 63f39b0ce888ced4d86cb451bf0b0135, type: 2}
   shootEffect: {fileID: 3964189469363241184}
+  audioSource: {fileID: 2865463419259274265}
+  gunSound: {fileID: 8300000, guid: 89f269ad0f86aea4ca0d2187bed210cf, type: 3}
 --- !u!1 &2009498818206627023
 GameObject:
   m_ObjectHideFlags: 0
@@ -337,6 +437,8 @@ MonoBehaviour:
   bulletTrailPrefab: {fileID: 8711352348840058643, guid: c3fd6ec575c98e2448512aae3213754b, type: 3}
   config: {fileID: 11400000, guid: adf609a41ee7ffa40b08c76507795fcd, type: 2}
   shootEffect: {fileID: 3964189469363241184}
+  audioSource: {fileID: 2865463419259274265}
+  gunSound: {fileID: 8300000, guid: c0f1c100053d76d43b7117634aeadabf, type: 3}
   shots: 5
 --- !u!1 &3848758102509689041
 GameObject:
@@ -385,6 +487,8 @@ MonoBehaviour:
   bulletTrailPrefab: {fileID: 8711352348840058643, guid: c3fd6ec575c98e2448512aae3213754b, type: 3}
   config: {fileID: 11400000, guid: fa22a529235c4ec4ab77d88481c4f9b2, type: 2}
   shootEffect: {fileID: 3964189469363241184}
+  audioSource: {fileID: 2865463419259274265}
+  gunSound: {fileID: 8300000, guid: 3b5aa9a7f32bf834e8e7a35c41cdbd87, type: 3}
 --- !u!1 &4041883945983613748
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,6 +970,8 @@ MonoBehaviour:
   bulletTrailPrefab: {fileID: 8711352348840058643, guid: c3fd6ec575c98e2448512aae3213754b, type: 3}
   config: {fileID: 11400000, guid: 0bb1e5167e4e56e4e9c6e2eb7cd06e6f, type: 2}
   shootEffect: {fileID: 3964189469363241184}
+  audioSource: {fileID: 2865463419259274265}
+  gunSound: {fileID: 8300000, guid: f118ed63593621a458c391d1aa7856a3, type: 3}
 --- !u!1 &9051129011739645646
 GameObject:
   m_ObjectHideFlags: 0
@@ -962,6 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AntennaManager
   Antennas: []
   Enemies: []
+  levelFinished: 0
   LevelFinished: {fileID: 6093259344971450405}
   Died: 0
 --- !u!1001 &967315935917328046

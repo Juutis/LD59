@@ -10,6 +10,12 @@ public class BaseGun : MonoBehaviour
     [SerializeField]
     protected ParticleSystem shootEffect;
 
+    [SerializeField]
+    protected AudioSource audioSource;
+
+    [SerializeField]
+    protected AudioClip gunSound;
+
     protected float rateOfFire;
     protected float damage;
     protected float range;
