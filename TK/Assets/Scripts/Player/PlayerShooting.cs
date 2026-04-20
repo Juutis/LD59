@@ -44,6 +44,7 @@ public class PlayerShooting : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        selectedGun = GameManager.instance.SelectedGun;
         selectGun1 = InputSystem.actions.FindAction("SelectGun1");
         selectGun2 = InputSystem.actions.FindAction("SelectGun2");
         selectGun3 = InputSystem.actions.FindAction("SelectGun3");
@@ -65,30 +66,35 @@ public class PlayerShooting : MonoBehaviour
         {
             Debug.Log("Gun 1 selected");
             selectedGun = (int)GunType.Pistol;
+            GameManager.instance.SelectedGun = selectedGun;
             rend.sprite = pistolSprite;
         }
         else if (selectGun2.WasPerformedThisFrame() && ammos[1] > 0)
         {
             Debug.Log("Gun 2 selected");
             selectedGun = (int)GunType.Shotgun;
+            GameManager.instance.SelectedGun = selectedGun;
             rend.sprite = gunSprite;
         }
         else if (selectGun3.WasPerformedThisFrame() && ammos[2] > 0)
         {
             Debug.Log("Gun 3 selected");
             selectedGun = (int)GunType.MachineGun;
+            GameManager.instance.SelectedGun = selectedGun;
             rend.sprite = gunSprite;
         }
         else if (selectGun4.WasPerformedThisFrame() && ammos[3] > 0)
         {
             Debug.Log("Gun 4 selected");
             selectedGun = (int)GunType.Sniper;
+            GameManager.instance.SelectedGun = selectedGun;
             rend.sprite = gunSprite;
         }
         else if (selectGun5.WasPerformedThisFrame() && ammos[4] > 0)
         {
             Debug.Log("Gun 5 selected");
             selectedGun = (int)GunType.Laser;
+            GameManager.instance.SelectedGun = selectedGun;
             rend.sprite = pistolSprite;
         }
 

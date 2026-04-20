@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     private int currentLevel = 1;
 
+    public int SelectedGun;
+
     private void Awake()
     {
         if (instance != null)
