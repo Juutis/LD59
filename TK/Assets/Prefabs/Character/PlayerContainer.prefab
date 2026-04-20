@@ -626,6 +626,55 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3103668604123449928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4885330006928037625}
+  - component: {fileID: 4700430545913612040}
+  m_Layer: 0
+  m_Name: Global Volume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4885330006928037625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3103668604123449928}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.3562119, y: -8.523247, z: -6.63973}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2849927796815081243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4700430545913612040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3103668604123449928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: ab09877e2e707104187f6f83e2f62510, type: 2}
 --- !u!1 &3848758102509689041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1304,7 @@ GameObject:
   - component: {fileID: 318194038563856512}
   - component: {fileID: 3324910837632039349}
   - component: {fileID: 1419989252753613767}
+  - component: {fileID: 2319994671973586303}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -1368,6 +1418,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f7317db9b09dd546a4dd945600e5972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenShake
+--- !u!114 &2319994671973586303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7840961392742734239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4642d322d417c394cb108bae0c1e5234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChromaticAberrationController
+  volume: {fileID: 4700430545913612040}
 --- !u!1 &9051129011739645646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1449,6 +1512,7 @@ Transform:
   - {fileID: 2479720954701858302}
   - {fileID: 2924611208318222355}
   - {fileID: 3327315926371122119}
+  - {fileID: 4885330006928037625}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8644287323497904472

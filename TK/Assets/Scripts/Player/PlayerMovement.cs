@@ -67,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
     private void Hurt()
     {
         ScreenShake.Instance.Shake();
+        ChromaticAberrationController.Instance.Trigger();
     }
 
     private void Death()
