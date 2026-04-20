@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Death()
     {
+        if (AntennaManager.Instance.levelFinished) return;
         youDied.SetActive(true);
         body.SetActive(true);
         body.transform.parent = null;

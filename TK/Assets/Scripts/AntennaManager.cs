@@ -9,7 +9,7 @@ public class AntennaManager : MonoBehaviour
     public List<AntennaSwitch> Antennas = new();
     public List<Enemy> Enemies = new();
 
-    private bool levelFinished = false;
+    public bool levelFinished = false;
 
     [SerializeField]
     private GameObject LevelFinished;
