@@ -16,7 +16,7 @@ TagManager:
   - Player
   - Ignore
   - Enemy
-  - 
+  - PlayerBumper
   - 
   - 
   - 
@@ -55,11 +55,11 @@ TagManager:
   - name: Pickup
     uniqueID: 4070211121
     locked: 0
-  - name: Player
-    uniqueID: 3145443047
-    locked: 0
   - name: Effects
     uniqueID: 3770090327
+    locked: 0
+  - name: Player
+    uniqueID: 3145443047
     locked: 0
   m_RenderingLayers:
   - Default
