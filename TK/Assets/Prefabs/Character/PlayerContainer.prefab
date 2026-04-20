@@ -192,6 +192,9 @@ MonoBehaviour:
   gun5: {fileID: 5138816958192612245}
   pickupSound: {fileID: 8300000, guid: d973c62a3ec7c7a4ebce36e9223ae6b4, type: 3}
   audioSource: {fileID: 2865463419259274265}
+  rend: {fileID: 6040929312985451196}
+  gunSprite: {fileID: -1807523810, guid: 9f5ddd799edf4b54085d39400769fd09, type: 3}
+  pistolSprite: {fileID: -1647768491, guid: 9f5ddd799edf4b54085d39400769fd09, type: 3}
 --- !u!114 &2201909571307413843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,6 +1588,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6825532356302162962, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1647768491, guid: 9f5ddd799edf4b54085d39400769fd09, type: 3}
+    - target: {fileID: 6825532356302162962, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
       propertyPath: m_SortingLayer
       value: 7
       objectReference: {fileID: 0}
@@ -1597,6 +1604,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
+--- !u!212 &6040929312985451196 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6825532356302162962, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
+  m_PrefabInstance: {fileID: 967315935917328046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6647906223512843342 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5849757873927238368, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}

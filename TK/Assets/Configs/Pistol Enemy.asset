@@ -28,7 +28,7 @@ MonoBehaviour:
   MaxTimeBetweenBursts: 1.2
   FireRate: 3
   AccuracyVariationDegrees: 10
-  idleAnimation: gun_idle
-  aimAnimation: gun_idle
-  attackAnimation: gun_idle
+  idleAnimation: gun_pistol
+  aimAnimation: gun_pistol
+  attackAnimation: gun_pistol
   melee: 0

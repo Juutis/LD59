@@ -32,6 +32,15 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField]
     private AudioSource audioSource;
 
+    [SerializeField]
+    private SpriteRenderer rend;
+
+    [SerializeField]
+    private Sprite gunSprite;
+
+    [SerializeField]
+    private Sprite pistolSprite;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -56,26 +65,31 @@ public class PlayerShooting : MonoBehaviour
         {
             Debug.Log("Gun 1 selected");
             selectedGun = (int)GunType.Pistol;
+            rend.sprite = pistolSprite;
         }
         else if (selectGun2.WasPerformedThisFrame() && ammos[1] > 0)
         {
             Debug.Log("Gun 2 selected");
             selectedGun = (int)GunType.Shotgun;
+            rend.sprite = gunSprite;
         }
         else if (selectGun3.WasPerformedThisFrame() && ammos[2] > 0)
         {
             Debug.Log("Gun 3 selected");
             selectedGun = (int)GunType.MachineGun;
+            rend.sprite = gunSprite;
         }
         else if (selectGun4.WasPerformedThisFrame() && ammos[3] > 0)
         {
             Debug.Log("Gun 4 selected");
             selectedGun = (int)GunType.Sniper;
+            rend.sprite = gunSprite;
         }
         else if (selectGun5.WasPerformedThisFrame() && ammos[4] > 0)
         {
             Debug.Log("Gun 5 selected");
             selectedGun = (int)GunType.Laser;
+            rend.sprite = pistolSprite;
         }
 
         bool hasAmmo = ammos[selectedGun] > 0 || selectedGun == 0;
