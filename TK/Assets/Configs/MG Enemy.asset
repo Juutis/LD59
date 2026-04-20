@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MG Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   Health: 5
-  Speed: 2
+  Speed: 3
   TurnSpeed: 360
   VisionRange: 4
   VisionAngle: 70
