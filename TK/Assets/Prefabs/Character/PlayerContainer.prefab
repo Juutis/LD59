@@ -829,6 +829,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AntennaManager
   Antennas: []
   Enemies: []
+  LevelFinished: {fileID: 6093259344971450405}
 --- !u!1001 &967315935917328046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,9 +996,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1934849903899581487, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934849903899581487, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934849903899581487, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3592544296385924933, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470106405089019616, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470106405089019616, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5480472066338446035, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1051,6 +1072,11 @@ PrefabInstance:
 --- !u!224 &2479720954701858302 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1456043565399969002, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+  m_PrefabInstance: {fileID: 3917387278291323156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6093259344971450405 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7120967190104899889, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
   m_PrefabInstance: {fileID: 3917387278291323156}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6173183708254839108
