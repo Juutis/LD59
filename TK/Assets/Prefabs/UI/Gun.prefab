@@ -245,6 +245,10 @@ MonoBehaviour:
   infinite: 1
   gunType: 0
   infinityIcon: {fileID: 7456227409170451404}
+  gunImage: {fileID: 4740383962007027973}
+  disabledGun: {fileID: 768159112, guid: c69531c5debf1a1408739d037889f461, type: 3}
+  activeGun: {fileID: -339263589, guid: c69531c5debf1a1408739d037889f461, type: 3}
+  normalGun: {fileID: -1661842566, guid: c69531c5debf1a1408739d037889f461, type: 3}
 --- !u!1 &8044358129168554743
 GameObject:
   m_ObjectHideFlags: 0

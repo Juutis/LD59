@@ -66,4 +66,9 @@ public class GameManager : MonoBehaviour
     {
         return playerHealth.GetHealth();
     }
+
+    public int GetActiveGun()
+    {
+        return playerShooting.GetActiveGun();
+    }
 }
