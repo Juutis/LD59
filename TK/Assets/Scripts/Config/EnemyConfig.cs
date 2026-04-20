@@ -24,5 +24,4 @@ public class EnemyConfig : ScriptableObject
     public string aimAnimation = "gun_idle";
     public string attackAnimation = "gun_idle";
     public bool melee = false;
-    
 }

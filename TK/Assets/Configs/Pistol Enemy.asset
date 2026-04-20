@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e946a9b4c9834e345abfce3f4c252363, type: 3}
-  m_Name: EnemyConfig
+  m_Name: Pistol Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   Health: 5
   Speed: 2
@@ -19,15 +19,15 @@ MonoBehaviour:
   VisionAngle: 70
   SmellDistance: 1.5
   AttackRange: 3
-  MinBurst: 8
-  MaxBurst: 10
-  AimingDuration: 0.6
-  TrackingDuration: 0.4
-  BackSwingDuration: 0.8
-  MinTimeBetweenBursts: 1
-  MaxTimeBetweenBursts: 1.5
-  FireRate: 10
-  AccuracyVariationDegrees: 20
+  MinBurst: 1
+  MaxBurst: 2
+  AimingDuration: 0.3
+  TrackingDuration: 0.2
+  BackSwingDuration: 0.5
+  MinTimeBetweenBursts: 0.8
+  MaxTimeBetweenBursts: 1.2
+  FireRate: 3
+  AccuracyVariationDegrees: 10
   idleAnimation: gun_idle
   aimAnimation: gun_idle
   attackAnimation: gun_idle

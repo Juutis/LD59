@@ -292,10 +292,10 @@ public class Enemy : MonoBehaviour
         var dispersion = Random.Range(-config.AccuracyVariationDegrees, config.AccuracyVariationDegrees);
         var dispersionQuat = Quaternion.AngleAxis(dispersion, Vector3.up);
         var dir = dispersionQuat * TargetDirection;
-        var projectileRange = config.AttackRange * 4;
+        var projectileRange = config.AttackRange + 2;
         if (config.melee)
         {
-            projectileRange = config.AttackRange * 1.5f;
+            projectileRange = config.AttackRange + 0.5f;
         }
         var trailEnd = myPosition + dir.normalized * projectileRange;
         if (Physics.Raycast(myPosition + 0.1f * Vector3.up, dir, out var hit, projectileRange, visionCheckLayers))
