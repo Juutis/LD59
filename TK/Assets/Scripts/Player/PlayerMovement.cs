@@ -21,6 +21,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private GameObject body;
 
+    [SerializeField]
+    private AudioClip pickupSound;
+
+    [SerializeField]
+    private AudioSource audioSource;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         speed = playerConfig.Speed;
 
         health = GetComponent<CharacterHealth>();
-        health.InitHealth(playerConfig.Health, Death, null);
+        health.InitHealth(playerConfig.Health, Death, Hurt);
         GameManager.instance.SetPlayerHealth(health);
     }
 
@@ -57,6 +64,11 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector3(vel.x, 0f, vel.y);
     }
 
+    private void Hurt()
+    {
+        ScreenShake.Instance.Shake();
+    }
+
     private void Death()
     {
         if (AntennaManager.Instance.levelFinished) return;
@@ -81,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (didHeal)
             {
+                audioSource.PlayOneShot(pickupSound);
                 Destroy(other.gameObject);
             }
         }

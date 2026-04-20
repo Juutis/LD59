@@ -25,6 +25,12 @@ public class PlayerShooting : MonoBehaviour
     private int selectedGun = 0;
 
     private int[] ammos;
+    
+    [SerializeField]
+    private AudioClip pickupSound;
+
+    [SerializeField]
+    private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -124,6 +130,7 @@ public class PlayerShooting : MonoBehaviour
                 ammos[gun] += crate.AmmoAmount;
 
                 Destroy(other.gameObject);
+                audioSource.PlayOneShot(pickupSound);
             }
         }
     }
