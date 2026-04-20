@@ -41,6 +41,7 @@ Transform:
   - {fileID: 1624888668444845502}
   - {fileID: 8067738767255273214}
   - {fileID: 1061191246235754830}
+  - {fileID: 8358563820312588}
   - {fileID: 3807861740026722697}
   - {fileID: 5624511417812385532}
   m_Father: {fileID: 2849927796815081243}
@@ -182,6 +183,7 @@ MonoBehaviour:
   gun2: {fileID: 3987152697703643883}
   gun3: {fileID: 1321103347103658674}
   gun4: {fileID: 1055466845443927976}
+  gun5: {fileID: 5138816958192612245}
 --- !u!114 &2201909571307413843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,6 +633,53 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &6299264954118516426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8358563820312588}
+  - component: {fileID: 5138816958192612245}
+  m_Layer: 0
+  m_Name: Gun5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8358563820312588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6299264954118516426}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 222364523490598742}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5138816958192612245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6299264954118516426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ce43d1b3a58924ca8375cc057fa6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Pistol
+  bulletTrailPrefab: {fileID: 695046848605259117, guid: e065fa9833bfe4640affddcb9fbb3ec4, type: 3}
+  config: {fileID: 11400000, guid: aeef51d4c7fecd540bcf2a39737a5bdb, type: 2}
+  shootEffect: {fileID: 3964189469363241184}
 --- !u!1 &6467545097396196612
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +886,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 222364523490598742}
     m_Modifications:
+    - target: {fileID: 1275515722950922794, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5849757873927238368, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -876,6 +929,10 @@ PrefabInstance:
     - target: {fileID: 5849757873927238368, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6825532356302162962, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
+      propertyPath: m_SortingLayer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7498612600775976020, guid: 11002f622be00b446b0f7fb555e7ace1, type: 3}
       propertyPath: m_Name
@@ -995,6 +1052,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1934849903899581487, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934849903899581487, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1934849903899581487, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3592544296385924933, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
       propertyPath: m_Name
       value: UICanvas
@@ -1012,6 +1081,22 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5480472066338446035, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236233215544601081, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236233215544601081, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236233215544601081, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236233215544601081, guid: 4ae88fcadf037054ab3c9b1055a9e17b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
