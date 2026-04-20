@@ -691,7 +691,7 @@ MonoBehaviour:
 
 
     Better go activate some old radio transmitters to
-    draw the attention of the invaders and  blow them out of the sky!'
+    draw the attention of the invaders and blow them out of the sky!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 108882d786d6a134dbcd574cabb6ea68, type: 2}
   m_sharedMaterial: {fileID: 1678139618451251607, guid: 108882d786d6a134dbcd574cabb6ea68, type: 2}
