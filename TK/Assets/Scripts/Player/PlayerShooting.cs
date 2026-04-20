@@ -13,11 +13,14 @@ public class PlayerShooting : MonoBehaviour
     private MachineGun gun3;
     [SerializeField]
     private Pistol gun4; // sniper rifle
+    [SerializeField]
+    private Pistol gun5; // laser gun
 
     private InputAction selectGun1;
     private InputAction selectGun2;
     private InputAction selectGun3;
     private InputAction selectGun4;
+    private InputAction selectGun5;
 
     private int selectedGun = 0;
 
@@ -36,6 +39,7 @@ public class PlayerShooting : MonoBehaviour
         selectGun2 = InputSystem.actions.FindAction("SelectGun2");
         selectGun3 = InputSystem.actions.FindAction("SelectGun3");
         selectGun4 = InputSystem.actions.FindAction("SelectGun4");
+        selectGun5 = InputSystem.actions.FindAction("SelectGun5");
         shootAction = InputSystem.actions.FindAction("Attack");
 
         ammos = GameManager.instance.GetLevelStartAmmos().ToList().ToArray();
@@ -68,6 +72,11 @@ public class PlayerShooting : MonoBehaviour
             Debug.Log("Gun 4 selected");
             selectedGun = (int)GunType.Sniper;
         }
+        else if (selectGun5.WasPerformedThisFrame() && ammos[4] > 0)
+        {
+            Debug.Log("Gun 5 selected");
+            selectedGun = (int)GunType.Laser;
+        }
 
         bool hasAmmo = ammos[selectedGun] > 0 || selectedGun == 0;
 
@@ -88,6 +97,9 @@ public class PlayerShooting : MonoBehaviour
                     break;
                 case (int)GunType.Sniper:
                     didShoot = gun4.Shoot();
+                    break;
+                case (int)GunType.Laser:
+                    didShoot = gun5.Shoot();
                     break;
             }
 
@@ -129,5 +141,6 @@ public enum GunType
     Pistol = 0,
     Shotgun = 1,
     MachineGun = 2,
-    Sniper = 3
+    Sniper = 3,
+    Laser = 4
 }

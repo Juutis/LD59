@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     {
         if (currentLevel == 0)
         {
-            return new int[4] { 0, 0, 0, 0 };
+            return new int[5] { 0, 0, 0, 0, 0 };
         }
         else
         {
