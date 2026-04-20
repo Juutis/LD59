@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
         speed = playerConfig.Speed;
 
         health = GetComponent<CharacterHealth>();
-        health.InitHealth(playerConfig.Health, Death, null);
+        health.InitHealth(playerConfig.Health, Death, Hurt);
         GameManager.instance.SetPlayerHealth(health);
     }
 
@@ -62,6 +62,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector2 vel = dir * speed;
         rb.linearVelocity = new Vector3(vel.x, 0f, vel.y);
+    }
+
+    private void Hurt()
+    {
+        ScreenShake.Instance.Shake();
     }
 
     private void Death()
