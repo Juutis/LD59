@@ -14,13 +14,13 @@ public class ScrollingText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var speed = 150.0f;
+        var speed = 100.0f;
         if (nextLevelAction.IsPressed())
         {
             speed = speed * 20;
         }
         transform.position += Vector3.up * speed * Time.deltaTime;
-        if (transform.position.y > 2500)
+        if (transform.position.y > 400)
         {
             SceneManager.LoadScene(1);
         }
