@@ -21,6 +21,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private GameObject body;
 
+    [SerializeField]
+    private AudioClip pickupSound;
+
+    [SerializeField]
+    private AudioSource audioSource;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -81,6 +88,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (didHeal)
             {
+                audioSource.PlayOneShot(pickupSound);
                 Destroy(other.gameObject);
             }
         }
