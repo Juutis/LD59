@@ -18,7 +18,7 @@ MonoBehaviour:
   VisionRange: 4
   VisionAngle: 70
   SmellDistance: 1.5
-  AttackRange: 3
+  AttackRange: 4
   MinBurst: 8
   MaxBurst: 10
   AimingDuration: 0.3
