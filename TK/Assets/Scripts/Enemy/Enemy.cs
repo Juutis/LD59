@@ -89,6 +89,17 @@ public class Enemy : MonoBehaviour
     public void Hurt()
     {
         hurtTimer = Time.time + 1.0f;
+        AlertNearbyEnemies();
+    }
+
+    public void TriggerAlert()
+    {
+        hurtTimer = Time.time + 1.0f;
+    }
+
+    private void AlertNearbyEnemies()
+    {
+        AntennaManager.Instance.Enemies.Where(it => Vector3.Distance(transform.position, it.transform.position) < 3.0f).ToList().ForEach(it => it.TriggerAlert());
     }
 
     // Update is called once per frame
@@ -135,7 +146,7 @@ public class Enemy : MonoBehaviour
 
     private void attack()
     {
-        var hasVision = canSeePlayer();
+        var hasVision = true;
         var playerDir = player.transform.position - myPosition;
         if (hasVision)
         {
@@ -167,6 +178,7 @@ public class Enemy : MonoBehaviour
                         shoot();
                         shootTimer = Time.time + 1.0f / config.FireRate;
                         burstRemaining--;
+                        AlertNearbyEnemies();
                     }
                 }
                 else
@@ -213,7 +225,7 @@ public class Enemy : MonoBehaviour
         if (canSeePlayer())
         {
             state = EnemyState.ATTACK;
-            AntennaManager.Instance.Enemies.Where(it => Vector3.Distance(transform.position, it.transform.position) < 3.0f).ToList().ForEach(it => it.Hurt());
+            AlertNearbyEnemies();
         }
     }
 
