@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e946a9b4c9834e345abfce3f4c252363, type: 3}
   m_Name: Alien Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
-  Health: 5
+  Health: 7
   Speed: 3
   TurnSpeed: 360
   VisionRange: 4

@@ -32,9 +32,11 @@ public class AntennaSwitch : MonoBehaviour
         {
             AntennaManager.Instance.AntennaActivated(this);
             rend.sprite = activated;
-            anim.enabled = true;
+
+            if (anim != null)
+            {
+                anim.enabled = true;
+            }
         }
     }
-
-
 }
