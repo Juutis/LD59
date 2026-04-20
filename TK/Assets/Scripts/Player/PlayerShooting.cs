@@ -44,7 +44,6 @@ public class PlayerShooting : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        selectedGun = GameManager.instance.SelectedGun;
         selectGun1 = InputSystem.actions.FindAction("SelectGun1");
         selectGun2 = InputSystem.actions.FindAction("SelectGun2");
         selectGun3 = InputSystem.actions.FindAction("SelectGun3");
@@ -57,6 +56,12 @@ public class PlayerShooting : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
+        
+        selectedGun = GameManager.instance.SelectedGun;
+        if (ammos[selectedGun] == 0)
+        {
+            selectedGun = 0;
+        }
     }
 
     // Update is called once per frame
