@@ -46,6 +46,8 @@ public class Shotgun : BaseGun
                 bulletTrail.Init(transform.position, trailEnd);
             }
 
+            audioSource.PlayOneShot(gunSound);
+            
             return true;
         }
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
@@ -53,6 +54,15 @@ public class Enemy : MonoBehaviour
 
     private Vector3 patrolTarget;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip shootSound;
+
+    [SerializeField]
+    private List<AudioClip> dieSounds;
+
 
     void Awake()
     {
@@ -87,6 +97,11 @@ public class Enemy : MonoBehaviour
         body.transform.position = transform.position;
         body.transform.rotation = transform.rotation;
         Destroy(gameObject);
+        if (dieSounds.Count > 0)
+        {
+            var deathSound = dieSounds[Random.Range(0, dieSounds.Count)];
+            body.GetComponent<AudioSource>().PlayOneShot(deathSound);
+        }
     }
 
     public void Hurt()
@@ -319,6 +334,7 @@ public class Enemy : MonoBehaviour
                 muzzleFlash.Play();
             }
         }
+        audioSource.PlayOneShot(shootSound);
     }
 
     

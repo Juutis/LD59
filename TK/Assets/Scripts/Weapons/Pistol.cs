@@ -34,6 +34,7 @@ public class Pistol : BaseGun
 
             BulletTrail bulletTrail = Instantiate(bulletTrailPrefab);
             bulletTrail.Init(transform.position, trailEnd);
+            audioSource.PlayOneShot(gunSound);
 
             return true;
         }

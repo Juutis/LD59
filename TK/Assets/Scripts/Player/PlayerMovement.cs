@@ -15,6 +15,12 @@ public class PlayerMovement : MonoBehaviour
 
     private CharacterHealth health;
 
+    [SerializeField]
+    private GameObject youDied;
+
+    [SerializeField]
+    private GameObject body;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         dir = moveAction.ReadValue<Vector2>();
-
 
         Vector3 pos = transform.position;
         Vector3 camPos = Camera.main.transform.position;
@@ -54,13 +59,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Death()
     {
-        Debug.Log("GAME OVER");
-        Invoke("DelayedDeath", 1f);
-    }
-
-    private void DelayedDeath()
-    {
-        GameManager.instance.RestartLevel();
+        if (AntennaManager.Instance.levelFinished) return;
+        youDied.SetActive(true);
+        body.SetActive(true);
+        body.transform.parent = null;
+        gameObject.SetActive(false);
+        AntennaManager.Instance.Died = true;
     }
 
     private void OnTriggerEnter(Collider other)

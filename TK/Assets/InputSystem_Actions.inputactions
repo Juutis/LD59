@@ -124,6 +124,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "NextLevel",
+                    "type": "Button",
+                    "id": "7458cb1b-0a40-4ebd-b9e4-c40359e4b895",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+                {
                     "name": "SelectGun5",
                     "type": "Button",
                     "id": "ca7af745-7c53-44fa-a3d4-73e91d827d4a",
@@ -560,6 +569,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SelectGun4",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ab18396-ac10-48a0-9974-19cbf8198231",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "NextLevel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
