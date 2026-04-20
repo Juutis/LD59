@@ -110,9 +110,9 @@ public class PlayerShooting : MonoBehaviour
             {
                 int gun = (int)crate.GunType;
                 ammos[gun] += crate.AmmoAmount;
-            }
 
-            Destroy(other.gameObject);
+                Destroy(other.gameObject);
+            }
         }
     }
 }

@@ -62,4 +62,17 @@ public class CharacterHealth : MonoBehaviour
     {
         return health;
     }
+
+    public bool AddHealth(int heal)
+    {
+        if (health >= maxHealth)
+        {
+            return false;
+        }
+        else
+        {
+            health = Mathf.Min(health + heal, maxHealth);
+            return true;
+        }
+    }
 }

@@ -62,4 +62,23 @@ public class PlayerMovement : MonoBehaviour
     {
         GameManager.instance.RestartLevel();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other != null && other.tag == "Crate")
+        {
+            bool didHeal = false;
+
+            if (other.gameObject.TryGetComponent(out HealthCrate crate))
+            {
+                int heal = crate.HealAmount;
+                didHeal = health.AddHealth(heal);
+            }
+
+            if (didHeal)
+            {
+                Destroy(other.gameObject);
+            }
+        }
+    }
 }
