@@ -62,6 +62,14 @@ public class PlayerShooting : MonoBehaviour
         {
             selectedGun = 0;
         }
+        if (selectedGun == 0 || selectedGun == 4)
+        {
+            rend.sprite = pistolSprite;
+        }
+        else
+        {
+            rend.sprite = gunSprite;
+        }
     }
 
     // Update is called once per frame
