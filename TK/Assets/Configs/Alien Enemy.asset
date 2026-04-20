@@ -13,20 +13,20 @@ MonoBehaviour:
   m_Name: Alien Enemy
   m_EditorClassIdentifier: Assembly-CSharp::EnemyConfig
   Health: 7
-  Speed: 3
+  Speed: 3.5
   TurnSpeed: 360
   VisionRange: 4
-  VisionAngle: 70
-  SmellDistance: 1.5
+  VisionAngle: 85
+  SmellDistance: 1.9
   AttackRange: 3
-  MinBurst: 1
-  MaxBurst: 2
+  MinBurst: 3
+  MaxBurst: 6
   AimingDuration: 0.3
   TrackingDuration: 0.2
   BackSwingDuration: 0.5
   MinTimeBetweenBursts: 0.8
   MaxTimeBetweenBursts: 1.2
-  FireRate: 3
+  FireRate: 8
   AccuracyVariationDegrees: 10
   idleAnimation: gun_idleAlien
   aimAnimation: gun_idleAlien
