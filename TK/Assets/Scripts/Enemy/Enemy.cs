@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Animator anim;
 
+    [SerializeField]
+    private ParticleSystem muzzleFlash;
+
 
     private GameObject player;
     private EnemyState state = EnemyState.PATROL;
@@ -310,7 +313,11 @@ public class Enemy : MonoBehaviour
         if (!config.melee)
         {
             var bulletTrail = Instantiate(bulletTrailPrefab);
-            bulletTrail.Init(myPosition, trailEnd);
+            bulletTrail.Init(myPosition + dir.normalized * 0.4f, trailEnd);
+            if (muzzleFlash != null)
+            {
+                muzzleFlash.Play();
+            }
         }
     }
 

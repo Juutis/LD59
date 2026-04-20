@@ -58,6 +58,9 @@ TagManager:
   - name: Effects
     uniqueID: 3770090327
     locked: 0
+  - name: MuzzleFlash
+    uniqueID: 3054326651
+    locked: 0
   - name: Player
     uniqueID: 3145443047
     locked: 0
